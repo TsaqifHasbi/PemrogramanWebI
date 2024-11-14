@@ -129,7 +129,7 @@
             <img src="Gambar/logo.png" alt="">
         </div>
         <a href="#">Futsal</a>
-        <a href="#">Badminton</a>
+        <a href="#">Memek</a>
         <a href="#">Voli</a>
         <a href="#">Basket</a>
     </div>
