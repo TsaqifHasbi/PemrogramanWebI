@@ -9,12 +9,18 @@
             margin: 0;
             font-family: Arial, sans-serif;
         }
+        body::-webkit-scrollbar {
+            display: none;
+        }
         body {
             background-color: #f8f8f8;
             color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
+            /*overflow-y: scroll;
+            -ms-overflow-style: none;
+            scrollbar-width: none;*/
         }
         .navbar {
             background-color: #4a4a4a;
