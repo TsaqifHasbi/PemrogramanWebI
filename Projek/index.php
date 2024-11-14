@@ -135,7 +135,7 @@
     </div>
     <div class="container">
         <div class="logo-container">
-            <h1 class="title">ScoreHub</h1>
+            <h1 class="title">PornHub</h1>
             <div class="vertical-line"></div>
             <div class="intro">
                 <p>ScoreHub adalah platform berbasis web yang dirancang untuk mencatat skor pertandingan olahraga secara otomatis dan real-time. Ini ditujukan untuk meningkatkan efisiensi, transparansi, dan akurasi skor dalam berbagai cabang olahraga seperti futsal, badminton, voli, dan basket.</p>
