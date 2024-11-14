@@ -97,11 +97,11 @@
             border-radius: 16px;
             margin: 30px 0 60px 0;
             width: 80%;
-            max-width: 500px;
+            max-width: 650px;
         }
-        .ajakan button {
+        .ajakan select {
             margin-top: 20px;
-            padding: 10px 20px;
+            padding: 10px 120px 10px 20px;
             font-size: 1em;
             color: #4a4a4a;
             background-color: #fff;
@@ -116,7 +116,7 @@
         footer {
             background-color: #4a4a4a;
             color: #fff;
-            padding: 20px 0;
+            padding: 32px 0;
             text-align: center;
             width: 100%;
             bottom: 0;
@@ -129,7 +129,7 @@
             <img src="Gambar/logo.png" alt="">
         </div>
         <a href="#">Futsal</a>
-        <a href="#">badminton</a>
+        <a href="#">Badminton</a>
         <a href="#">Voli</a>
         <a href="#">Basket</a>
     </div>
@@ -160,7 +160,13 @@
     <div class="ajakan">
         <h2>Coba Sekarang!</h2>
         <p>Mulailah gunakan ScoreHub dan bersenang-senanglah!</p>
-        <button>Pilih Scoreboard...</button>
+        <select>
+            <option value="" disabled selected hidden>Pilih Scoreboard...</option>
+            <option value="Futsal">Futsal</option>
+            <option value="Badminton">Badminton</option>
+            <option value="Voli">Voli</option>
+            <option value="Basket">Futsal</option>
+        </select>
     </div>
     <footer>
         © 2024 ScoreHub. All rights reserved.
