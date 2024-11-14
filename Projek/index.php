@@ -56,9 +56,9 @@
         }
         .logo-container .title {
             font-size: 5.5em;
-            color: #ff6700;
+            color: black;
             font-weight: bold;
-            text-shadow: 1px 1px #000;
+            text-shadow: 1px 1px #ff6700;
             margin: 10px 0;
         }
         .vertical-line {
@@ -129,13 +129,13 @@
             <img src="Gambar/logo.png" alt="">
         </div>
         <a href="#">Futsal</a>
-        <a href="#">Memek</a>
+        <a href="#">badminton</a>
         <a href="#">Voli</a>
         <a href="#">Basket</a>
     </div>
     <div class="container">
         <div class="logo-container">
-            <h1 class="title">PornHub</h1>
+            <h1 class="title">ScoreHub</h1>
             <div class="vertical-line"></div>
             <div class="intro">
                 <p>ScoreHub adalah platform berbasis web yang dirancang untuk mencatat skor pertandingan olahraga secara otomatis dan real-time. Ini ditujukan untuk meningkatkan efisiensi, transparansi, dan akurasi skor dalam berbagai cabang olahraga seperti futsal, badminton, voli, dan basket.</p>
