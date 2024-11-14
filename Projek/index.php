@@ -126,11 +126,11 @@
 <body>
     <div class="navbar">
         <div class="logo">
-            <img src="Gambar/logo.png" alt="">
+            <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
         <a href="#">Futsal</a>
         <a href="#">Badminton</a>
-        <a href="#">Voli</a>
+        <a href="score-voli.php">Voli</a>
         <a href="#">Basket</a>
     </div>
     <div class="container">
