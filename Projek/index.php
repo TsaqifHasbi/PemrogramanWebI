@@ -162,8 +162,6 @@
         <p>Mulailah gunakan ScoreHub dan bersenang-senanglah!</p>
         <button>Pilih Scoreboard...</button>
     </div>
-
-    <!-- Footer -->
     <footer>
         © 2024 ScoreHub. All rights reserved.
     </footer>
