@@ -45,7 +45,7 @@
         }
         .logo-container {
             display: flex;
-            gap: 40px;
+            gap: 32px;
             flex-direction:row;
             flex-wrap: wrap;
             align-items: center;
@@ -55,7 +55,7 @@
             width: 100%;
         }
         .logo-container .title {
-            font-size: 5.5em;
+            font-size: 5em;
             color: black;
             font-weight: bold;
             text-shadow: 1px 1px #ff6700;
@@ -63,12 +63,12 @@
         }
         .vertical-line {
             width: 2px;
-            height: 100px;
+            height: 130px;
             background-color: #333;
             margin: 0 auto;
         }
         .intro {
-            max-width: 450px;
+            max-width: 420px;
             margin-top: 10px;
             text-align: justify;
         }
