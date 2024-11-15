@@ -65,7 +65,7 @@
             position: relative;
             margin: 0 50px;
             color: #000;
-            font-size: 5em;
+            font-size: 4.6em;
             font-weight: bold;
             text-align: center;
             cursor: pointer;
@@ -73,7 +73,7 @@
         }
         .team-score:hover .score{
             cursor: pointer;
-            font-size: 3em;
+            font-size: 2.8em;
             font-weight: bold;
             text-align: center;
         }
@@ -134,13 +134,13 @@
             right: 300px;
         }
         .team-score .decrement:hover {
-            background-color: grey;
+            background-color: #B7B7B7;
         }
         .set-score {
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 2.5em;
+            font-size: 2em;
             font-weight: bold;
             color: #333;
         }
@@ -150,6 +150,11 @@
             justify-content: center;
             margin-top: 10px;
         }
+        .set-score .set-number:hover{
+            font-size: 1.4em;
+            cursor: pointer;
+        }
+
         .set-score .set-number {
             width: 60px;
             height: 60px;
@@ -164,12 +169,11 @@
             font-size: 1.2em;
             box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
-        /*
         .set-score .decrement-set {
             font-size: 0.8em;
             cursor: pointer;
-            color: #666;
-            background-color: #eee;
+            color: #333;
+            background-color: #ddd;
             width: 25px;
             height: 25px;
             border-radius: 50%;
@@ -183,7 +187,6 @@
         .set-score .decrement-set:hover {
             background-color: #ddd;
         }
-        */
         footer {
             background-color: #4a4a4a;
             color: #fff;
@@ -207,7 +210,7 @@
     </div>
     <h1>Volley Ball Match</h1>
     <div class="scoreboard">
-        <!--Team 1-->
+        <!--red-->
         <div class="team-score">
             <div class="team-name red">IF</div>
             <div class="score-container">
@@ -218,14 +221,16 @@
         <div class="set-score">
             <span>Set Score</span>
             <div class="set-container">
-                <!-- <div class="decrement-set red">-</div>-->
+                <!--Red-->
+                 <div class="decrement-set red">-</div>
                 <span class="set-number red">0</span>
                 <span>vs</span>
                 <span class="set-number blue">0</span>
-                <!--<div class="decrement-set"blue>-</div>-->
+                <!--Blue-->
+                <div class="decrement-set"blue>-</div>
             </div>
         </div>
-        <!--Team 2-->
+        <!--Blue-->
         <div class="team-score">
             <div class="team-name blue">IF</div>
             <div class="score-container">
