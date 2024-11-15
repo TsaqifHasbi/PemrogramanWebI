@@ -228,11 +228,11 @@
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
         <a href="#">Futsal</a>
-        <a href="score-badminton.php">Badminton</a>
-        <a href="score-voli.php" style="color: #ED7D31;">Voli</a>
+        <a href="score-badminton.php" style="color: #ED7D31;">Badminton</a>
+        <a href="score-voli.php">Voli</a>
         <a href="#">Basket</a>
     </div>
-    <h1>Volley Ball Match</h1>
+    <h1>Badminton Match</h1>
     <div class="scoreboard">
         <!--Red-->
         <div class="team-score">
@@ -282,14 +282,14 @@
             const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
             const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
 
-            if (teamAScore >= 25 && teamAScore >= teamBScore + 2) {
+            if (teamAScore >= 21 && teamAScore >= teamBScore + 2) {
                 const setElement = document.getElementById("teamASet");
                 let currentSet = parseInt(setElement.innerText);
                 setElement.innerText = currentSet + 1;
                 document.getElementById("teamAScore").innerText = 0;
                 document.getElementById("teamBScore").innerText = 0;
             }
-            if (teamBScore >= 25 && teamBScore >= teamAScore + 2) {
+            if (teamBScore >= 21 && teamBScore >= teamAScore + 2) {
                 const setElement = document.getElementById("teamBSet");
                 let currentSet = parseInt(setElement.innerText);
                 setElement.innerText = currentSet + 1;

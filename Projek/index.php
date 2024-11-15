@@ -135,7 +135,7 @@
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
         <a href="#">Futsal</a>
-        <a href="#">Badminton</a>
+        <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php">Voli</a>
         <a href="#">Basket</a>
     </div>

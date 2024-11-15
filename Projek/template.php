@@ -65,14 +65,14 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
+<div class="navbar">
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
-        <a href="#">Futsal</a>
-        <a href="#">Badminton</a>
+        <a href="score-futsal.php">Futsal</a>
+        <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php">Voli</a>
-        <a href="#">Basket</a>
+        <a href="score-basket.php">Basket</a>
     </div>
     <footer>
         © 2024 ScoreHub. All rights reserved.
