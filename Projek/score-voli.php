@@ -18,6 +18,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            user-select: none;
             /*overflow-y: scroll;
             -ms-overflow-style: none;
             scrollbar-width: none;*/
@@ -45,13 +46,13 @@
             width: 35px;
         }
         h1{
-            margin-top: 86px;
+            margin-top: 56px;
         }
         .scoreboard {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 80px 0;
+            margin: 68px 0;
         }
         .team-score {
             display: flex;
@@ -138,17 +139,29 @@
         }
         .set-score {
             display: flex;
+            position: relative;
             flex-direction: column;
             align-items: center;
             font-size: 2em;
             font-weight: bold;
             color: #333;
         }
+        .set-score .set-scoreflex{
+            display: flex;
+            align-items: center;
+        }
         .set-score .set-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             margin-top: 10px;
+        }
+        .set-score .set{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         .set-score .set-number:hover{
             font-size: 1.4em;
@@ -170,6 +183,7 @@
             box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
         }
         .set-score .decrement-set {
+            position: absolute;
             font-size: 0.8em;
             cursor: pointer;
             color: #333;
@@ -177,16 +191,26 @@
             width: 25px;
             height: 25px;
             border-radius: 50%;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
-            position: absolute;
             bottom: -10px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
         .set-score .decrement-set:hover {
-            background-color: #ddd;
+            background-color: #B7B7B7;
         }
+        .set-container:hover .decrement-set.red{
+            display: flex;
+            cursor: pointer;
+            left: 48px;
+        }
+        .set-container:hover .decrement-set.blue{
+            display: flex;
+            cursor: pointer;
+            right: 49px;
+        }
+
         footer {
             background-color: #4a4a4a;
             color: #fff;
@@ -210,31 +234,39 @@
     </div>
     <h1>Volley Ball Match</h1>
     <div class="scoreboard">
-        <!--red-->
+        <!--Red-->
         <div class="team-score">
             <div class="team-name red">IF</div>
-            <div class="score-container">
-                <span class="score">0</span>
+            <div class="score-container" onclick="tambah('teamAScore')">
+                <span id="teamAScore" class="score">0</span>
             </div>
             <div class="decrement red">-</div>
         </div>
         <div class="set-score">
             <span>Set Score</span>
-            <div class="set-container">
-                <!--Red-->
-                 <div class="decrement-set red">-</div>
-                <span class="set-number red">0</span>
+            <div class="set-scoreflex">
+                <div class="set-container">
+                    <!--Red-->
+                    <div class="set red" onclick="tambah('teamASet')">
+                        <span id="teamASet" class="set-number red">0</span>
+                    </div>
+                    <div class="decrement-set red">-</div>
+                </div>
                 <span>vs</span>
-                <span class="set-number blue">0</span>
-                <!--Blue-->
-                <div class="decrement-set"blue>-</div>
+                <div class="set-container">
+                    <!--Blue-->
+                    <div class="set blue" onclick="tambah('teamBSet')">
+                        <span id="teamBSet" class="set-number blue">0</span>
+                    </div>
+                    <div class="decrement-set blue">-</div>
+                </div>
             </div>
         </div>
         <!--Blue-->
         <div class="team-score">
             <div class="team-name blue">IF</div>
-            <div class="score-container">
-                <span class="score">0</span>
+            <div class="score-container" onclick="tambah('teamBScore')">
+                <span id="teamBScore" class="score">0</span>
             </div>
             <div class="decrement blue">-</div>
         </div>
@@ -242,6 +274,12 @@
     <footer>
         © 2024 ScoreHub. All rights reserved.
     </footer>
-
+    <script>
+        function tambah(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore + 1;
+        }
+    </script>
 </body>
 </html>
