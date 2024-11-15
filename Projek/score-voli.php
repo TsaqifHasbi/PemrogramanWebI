@@ -69,7 +69,7 @@
             font-weight: bold;
             text-align: center;
             cursor: pointer;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            /*box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);*/
         }
         .team-score:hover .score{
             cursor: pointer;
@@ -99,9 +99,9 @@
             justify-content: center;
             width: 300px;
             height: 300px;
-            background-color: #fff;
+            background-color: linear-gradient(45deg, #ccc, #999);;
             border-radius: 10px;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
         }
         .team-score .score {
             font-size: 2.5em;
@@ -109,22 +109,29 @@
         }
         .team-score .decrement {
             position: absolute;
-            bottom: 8px;
+            bottom: 5px;
             font-size: 0.4em;
             cursor: pointer;
             color: #333;
             background-color: #ddd;
-            width: 30px;
-            height: 30px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
             display: none;
             align-items: center;
             justify-content: center;
+            text-align: center;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .team-score:hover .decrement{
+        .team-score:hover .decrement.red{
             cursor: pointer;
             display: flex;
+            left: 300px;
+        }
+        .team-score:hover .decrement.blue{
+            cursor: pointer;
+            display: flex;
+            right: 300px;
         }
         .team-score .decrement:hover {
             background-color: grey;
