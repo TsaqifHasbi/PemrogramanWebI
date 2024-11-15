@@ -240,7 +240,7 @@
             <div class="score-container" onclick="tambah('teamAScore')">
                 <span id="teamAScore" class="score">0</span>
             </div>
-            <div class="decrement red">-</div>
+            <div class="decrement red" onclick="kurang('teamAScore')">-</div>
         </div>
         <div class="set-score">
             <span>Set Score</span>
@@ -250,7 +250,7 @@
                     <div class="set red" onclick="tambah('teamASet')">
                         <span id="teamASet" class="set-number red">0</span>
                     </div>
-                    <div class="decrement-set red">-</div>
+                    <div class="decrement-set red" onclick="kurang('teamASet')">-</div>
                 </div>
                 <span>vs</span>
                 <div class="set-container">
@@ -258,7 +258,7 @@
                     <div class="set blue" onclick="tambah('teamBSet')">
                         <span id="teamBSet" class="set-number blue">0</span>
                     </div>
-                    <div class="decrement-set blue">-</div>
+                    <div class="decrement-set blue" onclick="kurang('teamBSet')">-</div>
                 </div>
             </div>
         </div>
@@ -268,7 +268,7 @@
             <div class="score-container" onclick="tambah('teamBScore')">
                 <span id="teamBScore" class="score">0</span>
             </div>
-            <div class="decrement blue">-</div>
+            <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
         </div>
     </div>
     <footer>
@@ -279,6 +279,11 @@
             const scoreElement = document.getElementById(elementId);
             let currentScore = parseInt(scoreElement.innerText);
             scoreElement.innerText = currentScore + 1;
+        }
+        function kurang(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore - 1;
         }
     </script>
 </body>
