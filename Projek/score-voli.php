@@ -68,7 +68,14 @@
             font-size: 5em;
             font-weight: bold;
             text-align: center;
+            cursor: pointer;
             box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .team-score:hover .score{
+            cursor: pointer;
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
         }
         .team-score .team-name {
             position: absolute;
@@ -100,25 +107,28 @@
             font-size: 2.5em;
             color: #333;
         }
-        /* .team-score .decrement {
+        .team-score .decrement {
             position: absolute;
-            bottom: 10px;
-            font-size: 1.2em;
+            bottom: 8px;
+            font-size: 0.4em;
             cursor: pointer;
-            color: #666;
-            background-color: #eee;
+            color: #333;
+            background-color: #ddd;
             width: 30px;
             height: 30px;
             border-radius: 50%;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .team-score .decrement:hover {
-            background-color: #ddd;
+        .team-score:hover .decrement{
+            cursor: pointer;
+            display: flex;
         }
-        */
+        .team-score .decrement:hover {
+            background-color: grey;
+        }
         .set-score {
             display: flex;
             flex-direction: column;
@@ -196,7 +206,7 @@
             <div class="score-container">
                 <span class="score">0</span>
             </div>
-            <!--<div class="decrement red">-</div>-->
+            <div class="decrement red">-</div>
         </div>
         <div class="set-score">
             <span>Set Score</span>
@@ -214,7 +224,7 @@
             <div class="score-container">
                 <span class="score">0</span>
             </div>
-            <!--<div class="decrement blue">-</div>-->
+            <div class="decrement blue">-</div>
         </div>
     </div>
     <footer>
