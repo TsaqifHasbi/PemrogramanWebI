@@ -24,7 +24,7 @@
             scrollbar-width: none;*/
         }
         .navbar {
-            background-color: #4a4a4a;
+            background-color: #4F4A45;
             width: 100%;
             padding: 20px 0;
             display: flex;
@@ -73,7 +73,7 @@
             justify-content: center;
             width: 240px;
             height: 240px;
-            background: linear-gradient(145deg, #ccc, #999);
+            background: linear-gradient(to top, #cccccc, #4F4A45);
             border-radius: 20px;
             position: relative;
             margin: 0 100px;
@@ -118,7 +118,7 @@
             justify-content: center;
             width: 240px;
             height: 240px;
-            background-color: linear-gradient(45deg, #ccc, #999);;
+            background-color: linear-gradient(to top, #ccc, #999);;
             border-radius: 10px;
             /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
         }
@@ -184,7 +184,7 @@
             margin: 0 auto;
         }
         footer {
-            background-color: #4a4a4a;
+            background-color: #4F4A45;
             color: #fff;
             padding: 32px 0;
             text-align: center;

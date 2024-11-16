@@ -24,7 +24,7 @@
             scrollbar-width: none;*/
         }
         .navbar {
-            background-color: #4a4a4a;
+            background-color: #4F4A45;
             width: 100%;
             padding: 20px 0;
             display: flex;
@@ -61,7 +61,7 @@
             justify-content: center;
             width: 320px;
             height: 320px;
-            background: linear-gradient(145deg, #ccc, #999);
+            background: linear-gradient(to top, #cccccc, #4F4A45);
             border-radius: 20px;
             position: relative;
             margin: 0 50px;
@@ -212,8 +212,8 @@
         }
 
         footer {
-            background-color: #4a4a4a;
-            color: #fff;
+            background-color: #4F4A45;
+            color: #ffffff;
             padding: 32px 0;
             text-align: center;
             width: 100%;

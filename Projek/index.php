@@ -23,7 +23,7 @@
             scrollbar-width: none;*/
         }
         .navbar {
-            background-color: #4a4a4a;
+            background-color: #4F4A45;
             width: 100%;
             padding: 20px 0;
             display: flex;
@@ -120,7 +120,7 @@
             margin-top: 15px;
         }
         footer {
-            background-color: #4a4a4a;
+            background-color: #4F4A45;
             color: #fff;
             padding: 32px 0;
             text-align: center;
