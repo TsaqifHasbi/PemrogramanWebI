@@ -244,6 +244,7 @@
         let timerInterval = null;
         const startPauseButton = document.querySelector(".start-pause");
         const resetButton = document.querySelector(".reset");
+        const timerButton = document.querySelector(".timer");
 
         function updateTimerDisplay() {
             const menitElement = document.querySelector(".menit");
@@ -251,6 +252,7 @@
             menitElement.textContent = menit.toString().padStart(2, "0");
             detikElement.textContent = detik.toString().padStart(2, "0");
         }
+
         function toggleTimer() {
             if (timerInterval) {
                 clearInterval(timerInterval);
@@ -264,6 +266,7 @@
                         alert("Waktu habis!");
                         timerInterval = null;
                         startPauseButton.textContent = "Start";
+                        startPauseButton.addEventListener("click", toggleTimer);
                         return;
                     }
                     if (detik === 0) {
@@ -290,6 +293,7 @@
 
         startPauseButton.addEventListener("click", toggleTimer);
         resetButton.addEventListener("click", resetTimer);
+        timerButton.addEventListener("click", toggleTimer);
 
         updateTimerDisplay();
 
