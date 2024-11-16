@@ -227,7 +227,7 @@
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
-        <a href="#">Futsal</a>
+        <a href="score-futsal.php">Futsal</a>
         <a href="score-badminton.php" style="color: #ED7D31;">Badminton</a>
         <a href="score-voli.php">Voli</a>
         <a href="#">Basket</a>
