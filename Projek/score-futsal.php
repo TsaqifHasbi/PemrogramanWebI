@@ -46,7 +46,7 @@
             width: 35px;
         }
         h1{
-            margin-top: 36px;
+            margin-top: 48px;
         }
         .scoreboard {
             display: flex;
@@ -64,18 +64,19 @@
         }
         .score{
             display: flex;
+            margin: 4px 0 40px 0;
         }
         .team-score {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 320px;
-            height: 320px;
+            width: 240px;
+            height: 240px;
             background: linear-gradient(145deg, #ccc, #999);
             border-radius: 20px;
             position: relative;
-            margin: 0 50px;
+            margin: 0 100px;
             color: #000;
             font-size: 4.6em;
             font-weight: bold;
@@ -105,12 +106,18 @@
         .team-score .team-name.blue {
             background-color: #5c9eff;
         }
+        .score span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 24px;
+        }
         .team-score .score-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 300px;
-            height: 300px;
+            width: 240px;
+            height: 240px;
             background-color: linear-gradient(45deg, #ccc, #999);;
             border-radius: 10px;
             /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
@@ -121,7 +128,7 @@
         }
         .team-score .decrement {
             position: absolute;
-            bottom: 5px;
+            bottom: 2px;
             font-size: 0.4em;
             cursor: pointer;
             color: #333;
@@ -138,12 +145,12 @@
         .team-score:hover .decrement.red{
             cursor: pointer;
             display: flex;
-            left: 300px;
+            left: 210px;
         }
         .team-score:hover .decrement.blue{
             cursor: pointer;
             display: flex;
-            right: 300px;
+            right: 210px;
         }
         .team-score .decrement:hover {
             background-color: #B7B7B7;
@@ -156,6 +163,25 @@
             font-size: 2em;
             font-weight: bold;
             color: #333;
+        }
+        .start-reset{
+            display: flex;
+            font-size: 0.8em;
+            font-weight: bold;
+            gap: 10px;
+            color: #333;
+        }
+        .start-pause{
+            cursor: pointer;
+        }
+        .reset{
+            cursor: pointer;
+        }
+        .vertical-line {
+            width: 2px;
+            height: 30px;
+            background-color: #333;
+            margin: 0 auto;
         }
         footer {
             background-color: #4a4a4a;
@@ -173,18 +199,19 @@
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
-        <a href="score-futsal.php">Futsal</a>
+        <a href="score-futsal.php" style="color: #ED7D31;">Futsal</a>
         <a href="score-badminton.php">Badminton</a>
-        <a href="score-voli.php" style="color: #ED7D31;">Voli</a>
+        <a href="score-voli.php">Voli</a>
         <a href="#">Basket</a>
     </div>
     <h1>Futsal Match</h1>
     <div class="scoreboard">
-        <!--Red-->
+        
         <div class="timer">
-            <span class="menit">10</span><span> : </span><span>00</span>
+            <span class="menit">10</span><span> : </span><span class="detik">00</span>
         </div>
         <div class="score">
+            <!--Red-->
             <div class="team-score">
                 <div class="team-name red">IF</div>
                 <div class="score-container" onclick="tambah('teamAScore')">
@@ -202,11 +229,70 @@
                 <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
             </div>
         </div>
+        <div class="start-reset">
+            <span class="start-pause">Start</span>
+            <div class="vertical-line"></div>
+            <span class="reset">reset</span>
+        </div>
     </div>
     <footer>
         © 2024 ScoreHub. All rights reserved.
     </footer>
     <script>
+        let menit = 10;
+        let detik = 0;
+        let timerInterval = null;
+        const startPauseButton = document.querySelector(".start-pause");
+        const resetButton = document.querySelector(".reset");
+
+        function updateTimerDisplay() {
+            const menitElement = document.querySelector(".menit");
+            const detikElement = document.querySelector(".detik");
+            menitElement.textContent = menit.toString().padStart(2, "0");
+            detikElement.textContent = detik.toString().padStart(2, "0");
+        }
+        function toggleTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                startPauseButton.textContent = "Start";
+            } else {
+                startPauseButton.textContent = "Pause";
+                timerInterval = setInterval(() => {
+                    if (menit === 0 && detik === 0) {
+                        clearInterval(timerInterval);
+                        alert("Waktu habis!");
+                        timerInterval = null;
+                        startPauseButton.textContent = "Start";
+                        return;
+                    }
+                    if (detik === 0) {
+                        menit--;
+                        detik = 59;
+                    } else {
+                        detik--;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            startPauseButton.textContent = "Start";
+
+            menit = 10;
+            detik = 0;
+
+            updateTimerDisplay();
+        }
+
+        startPauseButton.addEventListener("click", toggleTimer);
+        resetButton.addEventListener("click", resetTimer);
+
+        updateTimerDisplay();
+
         function tambah(elementId) {
             const scoreElement = document.getElementById(elementId);
             let currentScore = parseInt(scoreElement.innerText);
