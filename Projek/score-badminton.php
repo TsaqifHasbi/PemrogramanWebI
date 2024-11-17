@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScoreHub - Voli</title>
+    <title>ScoreHub - Badminton</title>
+    <link rel="shotcut icon" href="Gambar/logo.png">
     <style>
         * {
             margin: 0;
@@ -230,7 +231,7 @@
         <a href="score-futsal.php">Futsal</a>
         <a href="score-badminton.php" style="color: #ED7D31;">Badminton</a>
         <a href="score-voli.php">Voli</a>
-        <a href="#">Basket</a>
+        <a href="score-basket.php">Basket</a>
     </div>
     <h1>Badminton Match</h1>
     <div class="scoreboard">

@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScoreHub - Voli</title>
+    <title>ScoreHub - Futsal</title>
+    <link rel="shotcut icon" href="Gambar/logo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -168,7 +172,7 @@
             display: flex;
             font-size: 0.8em;
             font-weight: bold;
-            gap: 10px;
+            gap: 16px;
             color: #333;
         }
         .start-pause{
@@ -202,7 +206,7 @@
         <a href="score-futsal.php" style="color: #ED7D31;">Futsal</a>
         <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php">Voli</a>
-        <a href="#">Basket</a>
+        <a href="score-basket.php">Basket</a>
     </div>
     <h1>Futsal Match</h1>
     <div class="scoreboard">
@@ -230,9 +234,9 @@
             </div>
         </div>
         <div class="start-reset">
-            <span class="start-pause">Start</span>
+            <span class="start-pause"><i class='bx bxs-right-arrow'></i></span>
             <div class="vertical-line"></div>
-            <span class="reset">reset</span>
+            <span class="reset"><i class='bx bx-revision'></i></span>
         </div>
     </div>
     <footer>
@@ -257,15 +261,15 @@
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
-                startPauseButton.textContent = "Start";
+                startPauseButton.innerHTML = "<i class='bx bxs-right-arrow'></i>";
             } else {
-                startPauseButton.textContent = "Pause";
+                startPauseButton.innerHTML = "<i class='bx bx-pause-circle'></i>";
                 timerInterval = setInterval(() => {
                     if (menit === 0 && detik === 0) {
                         clearInterval(timerInterval);
                         alert("Waktu habis!");
                         timerInterval = null;
-                        startPauseButton.textContent = "Start";
+                        startPauseButton.innerHTML = "<i class='bx bxs-right-arrow'></i>";
                         startPauseButton.addEventListener("click", toggleTimer);
                         return;
                     }
@@ -283,7 +287,7 @@
         function resetTimer() {
             clearInterval(timerInterval);
             timerInterval = null;
-            startPauseButton.textContent = "Start";
+            startPauseButton.innerHTML = "<i class='bx bxs-right-arrow'></i>";
 
             menit = 10;
             detik = 0;

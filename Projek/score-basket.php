@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScoreHub - Voli</title>
+    <title>ScoreHub - Futsal</title>
     <link rel="shotcut icon" href="Gambar/logo.png">
     <style>
         * {
@@ -47,25 +47,37 @@
             width: 35px;
         }
         h1{
-            margin-top: 56px;
+            margin-top: 48px;
         }
         .scoreboard {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 68px 0;
+            margin: 28px 0;
+        }
+        .timer{
+            display: flex;
+            margin: 0 0 40px 0;
+            border: #000 solid 2px;
+            padding: 10px 18px;
+            border-radius: 10px;
+        }
+        .score{
+            display: flex;
+            margin: 4px 0 40px 0;
         }
         .team-score {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 320px;
-            height: 320px;
+            width: 240px;
+            height: 240px;
             background: linear-gradient(to top, #cccccc, #4F4A45);
             border-radius: 20px;
             position: relative;
-            margin: 0 50px;
+            margin: 0 100px;
             color: #000;
             font-size: 4.6em;
             font-weight: bold;
@@ -95,13 +107,19 @@
         .team-score .team-name.blue {
             background-color: #5c9eff;
         }
+        .score span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            top: 24px;
+        }
         .team-score .score-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 300px;
-            height: 300px;
-            background-color: linear-gradient(45deg, #ccc, #999);;
+            width: 240px;
+            height: 240px;
+            background-color: linear-gradient(to top, #ccc, #999);;
             border-radius: 10px;
             /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
         }
@@ -111,7 +129,7 @@
         }
         .team-score .decrement {
             position: absolute;
-            bottom: 5px;
+            bottom: 2px;
             font-size: 0.4em;
             cursor: pointer;
             color: #333;
@@ -128,17 +146,17 @@
         .team-score:hover .decrement.red{
             cursor: pointer;
             display: flex;
-            left: 300px;
+            left: 210px;
         }
         .team-score:hover .decrement.blue{
             cursor: pointer;
             display: flex;
-            right: 300px;
+            right: 210px;
         }
         .team-score .decrement:hover {
             background-color: #B7B7B7;
         }
-        .set-score {
+        span {
             display: flex;
             position: relative;
             flex-direction: column;
@@ -147,74 +165,28 @@
             font-weight: bold;
             color: #333;
         }
-        .set-score .set-scoreflex{
+        .start-reset{
             display: flex;
-            align-items: center;
-        }
-        .set-score .set-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .set-score .set{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .set-score .set-number:hover{
-            font-size: 1.4em;
-            cursor: pointer;
-        }
-
-        .set-score .set-number {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 10px;
-            position: relative;
-            margin: 0 10px;
-            font-size: 1.2em;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .set-score .decrement-set {
-            position: absolute;
             font-size: 0.8em;
-            cursor: pointer;
+            font-weight: bold;
+            gap: 10px;
             color: #333;
-            background-color: #ddd;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            bottom: -10px;
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .set-score .decrement-set:hover {
-            background-color: #B7B7B7;
-        }
-        .set-container:hover .decrement-set.red{
-            display: flex;
+        .start-pause{
             cursor: pointer;
-            left: 48px;
         }
-        .set-container:hover .decrement-set.blue{
-            display: flex;
+        .reset{
             cursor: pointer;
-            right: 49px;
         }
-
+        .vertical-line {
+            width: 2px;
+            height: 30px;
+            background-color: #333;
+            margin: 0 auto;
+        }
         footer {
             background-color: #4F4A45;
-            color: #ffffff;
+            color: #fff;
             padding: 32px 0;
             text-align: center;
             width: 100%;
@@ -228,75 +200,110 @@
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
-        <a href="score-futsal.php">Futsal</a>
+        <a href="score-futsal.php" style="color: #ED7D31;">Futsal</a>
         <a href="score-badminton.php">Badminton</a>
-        <a href="score-voli.php" style="color: #ED7D31;">Voli</a>
+        <a href="score-voli.php">Voli</a>
         <a href="score-basket.php">Basket</a>
     </div>
-    <h1>Volley Ball Match</h1>
+    <h1>Futsal Match</h1>
     <div class="scoreboard">
-        <!--Red-->
-        <div class="team-score">
-            <div class="team-name red">IF</div>
-            <div class="score-container" onclick="tambah('teamAScore')">
-                <span id="teamAScore" class="score">0</span>
-            </div>
-            <div class="decrement red" onclick="kurang('teamAScore')">-</div>
+        
+        <div class="timer">
+            <span class="menit">10</span><span> : </span><span class="detik">00</span>
         </div>
-        <div class="set-score">
-            <span>Set Score</span>
-            <div class="set-scoreflex">
-                <div class="set-container">
-                    <!--Red-->
-                    <div class="set red" onclick="tambah('teamASet')">
-                        <span id="teamASet" class="set-number red">0</span>
-                    </div>
-                    <div class="decrement-set red" onclick="kurang('teamASet')">-</div>
+        <div class="score">
+            <!--Red-->
+            <div class="team-score">
+                <div class="team-name red">IF</div>
+                <div class="score-container" onclick="tambah('teamAScore')">
+                    <span id="teamAScore" class="score">0</span>
                 </div>
-                <span>vs</span>
-                <div class="set-container">
-                    <!--Blue-->
-                    <div class="set blue" onclick="tambah('teamBSet')">
-                        <span id="teamBSet" class="set-number blue">0</span>
-                    </div>
-                    <div class="decrement-set blue" onclick="kurang('teamBSet')">-</div>
+                <div class="decrement red" onclick="kurang('teamAScore')">-</div>
+            </div>
+            <span>vs</span>
+            <!--Blue-->
+            <div class="team-score">
+                <div class="team-name blue">IF</div>
+                <div class="score-container" onclick="tambah('teamBScore')">
+                    <span id="teamBScore" class="score">0</span>
                 </div>
+                <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
             </div>
         </div>
-        <!--Blue-->
-        <div class="team-score">
-            <div class="team-name blue">IF</div>
-            <div class="score-container" onclick="tambah('teamBScore')">
-                <span id="teamBScore" class="score">0</span>
-            </div>
-            <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
+        <div class="start-reset">
+            <span class="start-pause">Start</span>
+            <div class="vertical-line"></div>
+            <span class="reset">reset</span>
         </div>
     </div>
     <footer>
         © 2024 ScoreHub. All rights reserved.
     </footer>
     <script>
+        let menit = 10;
+        let detik = 0;
+        let timerInterval = null;
+        const startPauseButton = document.querySelector(".start-pause");
+        const resetButton = document.querySelector(".reset");
+        const timerButton = document.querySelector(".timer");
+
+        function updateTimerDisplay() {
+            const menitElement = document.querySelector(".menit");
+            const detikElement = document.querySelector(".detik");
+            menitElement.textContent = menit.toString().padStart(2, "0");
+            detikElement.textContent = detik.toString().padStart(2, "0");
+        }
+
+        function toggleTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                startPauseButton.textContent = "Start";
+            } else {
+                startPauseButton.textContent = "Pause";
+                timerInterval = setInterval(() => {
+                    if (menit === 0 && detik === 0) {
+                        clearInterval(timerInterval);
+                        alert("Waktu habis!");
+                        timerInterval = null;
+                        startPauseButton.textContent = "Start";
+                        startPauseButton.addEventListener("click", toggleTimer);
+                        return;
+                    }
+                    if (detik === 0) {
+                        menit--;
+                        detik = 59;
+                    } else {
+                        detik--;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            startPauseButton.textContent = "Start";
+
+            menit = 10;
+            detik = 0;
+
+            updateTimerDisplay();
+        }
+
+        startPauseButton.addEventListener("click", toggleTimer);
+        resetButton.addEventListener("click", resetTimer);
+        timerButton.addEventListener("click", toggleTimer);
+
+        updateTimerDisplay();
+
         function tambah(elementId) {
             const scoreElement = document.getElementById(elementId);
             let currentScore = parseInt(scoreElement.innerText);
             scoreElement.innerText = currentScore + 1;
             const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
             const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
-
-            if (teamAScore >= 25 && teamAScore >= teamBScore + 2) {
-                const setElement = document.getElementById("teamASet");
-                let currentSet = parseInt(setElement.innerText);
-                setElement.innerText = currentSet + 1;
-                document.getElementById("teamAScore").innerText = 0;
-                document.getElementById("teamBScore").innerText = 0;
-            }
-            if (teamBScore >= 25 && teamBScore >= teamAScore + 2) {
-                const setElement = document.getElementById("teamBSet");
-                let currentSet = parseInt(setElement.innerText);
-                setElement.innerText = currentSet + 1;
-                document.getElementById("teamAScore").innerText = 0;
-                document.getElementById("teamBScore").innerText = 0;
-            }
         }
 
         function kurang(elementId) {
@@ -306,7 +313,6 @@
                 scoreElement.innerText = currentScore - 1;
             }
         }
-
     </script>
 </body>
 </html>
