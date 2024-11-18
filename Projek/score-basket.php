@@ -60,7 +60,7 @@
             display: flex;
             margin: 0 0 40px 0;
             border: #000 solid 2px;
-            padding: 10px 18px;
+            padding: 15px 28px;
             border-radius: 10px;
         }
         .timer:hover{
@@ -89,7 +89,7 @@
         }
         .team-score:hover .numscore{
             cursor: pointer;
-            font-size: 2.8em;
+            font-size: 1.8em;
             font-weight: bold;
             text-align: center;
             justify-content: center;
@@ -128,13 +128,37 @@
             box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
         } */
         .team-score .numscore {
-            font-size: 2.5em;
+            font-size: 1.5em;
             color: #333;
-        }
-        .team-score .decrement {
             position: absolute;
-            bottom: 2px;
-            font-size: 0.4em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .team-score .option {
+            display: flex;
+            justify-content: center;
+            display: none;
+            top: 6em;
+            gap: 10px;
+        }
+        .team-score .score-container span{
+            display: flex;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
+        }
+        .team-score .score-container{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .min, .plus2, .plus3 {
+            position: relative;
+            font-size: 0.2em;
             cursor: pointer;
             color: #333;
             background-color: #ddd;
@@ -147,17 +171,16 @@
             text-align: center;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .team-score:hover .decrement.red{
+        .team-score:hover .option{
             cursor: pointer;
             display: flex;
-            left: 210px;
         }
-        .team-score:hover .decrement.blue{
+        .team-score:hover .min, .plus2, .plus3{
             cursor: pointer;
             display: flex;
-            right: 210px;
+            top: 7.5em;
         }
-        .team-score .decrement:hover {
+        .min:hover, .plus2:hover, .plus3:hover {
             background-color: #B7B7B7;
         }
         .shotime-container{
@@ -197,6 +220,7 @@
             justify-content: center;
             display: none;
             top: 10px;
+            gap: 10px;
         }
         .nol, .half, .full {
             position: relative;
@@ -216,7 +240,6 @@
         .shotime-container:hover .nol, .half, .full{
             cursor: pointer;
             display: flex;
-            gap: 10px;
             top: 4em;
         }
         .nol:hover, .half:hover, .full:hover{
@@ -225,7 +248,6 @@
         .shotime-container:hover .shotime-manage{
             cursor: pointer;
             display: flex;
-            gap: 10px;
         }
         span {
             display: flex;
@@ -268,7 +290,11 @@
                 <div class="score-container" onclick="tambah('teamAScore')">
                     <span id="teamAScore" class="numscore">0</span>
                 </div>
-                <div class="decrement red" onclick="kurang('teamAScore')">-</div>
+                <div class="option red">
+                    <span class="min" onclick="kurang('teamAScore')">-1</span>
+                    <span class="plus2" onclick="tambah2('teamAScore')">+2</span>
+                    <span class="plus3" onclick="tambah3('teamAScore')">+3</span>
+                </div>
             </div>
             <span>vs</span>
             <!--Blue-->
@@ -277,11 +303,15 @@
                 <div class="score-container" onclick="tambah('teamBScore')">
                     <span id="teamBScore" class="numscore">0</span>
                 </div>
-                <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
+                <div class="option blue">
+                    <span class="min" onclick="kurang('teamBScore')">-1</span>
+                    <span class="plus2" onclick="tambah2('teamBScore')">+2</span>
+                    <span class="plus3" onclick="tambah3('teamBScore')">+3</span>
+                </div>
             </div>
         </div>
         <div class="shotime-container">
-                <div class="container" onclick="shotime()">
+                <div class="container">
                     <span id="shotime" class="shotime">24</span>
                 </div>
                 <div class="shotime-manage">
@@ -301,7 +331,7 @@
         let shotime = 24;
         let shotimeInterval = null;
         const timerElement = document.querySelector(".timer");
-        const shotimeElement = document.querySelector("#shotime");
+        const shotimeElement = document.querySelector(".shotime");
         const shotimeContainer = document.querySelector(".shotime-container");
         const shotimeManageElements = document.querySelectorAll(".shotime-manage span");
 
@@ -386,6 +416,22 @@
             const scoreElement = document.getElementById(elementId);
             let currentScore = parseInt(scoreElement.innerText);
             scoreElement.innerText = currentScore + 1;
+            const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
+            const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
+        }
+
+        function tambah2(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore + 2;
+            const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
+            const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
+        }
+
+        function tambah3(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore + 3;
             const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
             const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
         }
