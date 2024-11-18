@@ -63,6 +63,9 @@
             padding: 10px 18px;
             border-radius: 10px;
         }
+        .timer:hover{
+            cursor: pointer;
+        }
         .score{
             display: flex;
             margin: 4px 0 40px 0;
@@ -81,15 +84,16 @@
             color: #000;
             font-size: 4.6em;
             font-weight: bold;
-            text-align: center;
             cursor: pointer;
             /*box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);*/
         }
-        .team-score:hover .score{
+        .team-score:hover .numscore{
             cursor: pointer;
             font-size: 2.8em;
             font-weight: bold;
             text-align: center;
+            justify-content: center;
+            align-items: center;
         }
         .team-score .team-name {
             position: absolute;
@@ -111,9 +115,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            top: 24px;
         }
-        .team-score .score-container {
+
+        /* .team-score .score-container {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -121,9 +125,9 @@
             height: 240px;
             background-color: linear-gradient(to top, #ccc, #999);;
             border-radius: 10px;
-            /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
-        }
-        .team-score .score {
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+        } */
+        .team-score .numscore {
             font-size: 2.5em;
             color: #333;
         }
@@ -156,6 +160,52 @@
         .team-score .decrement:hover {
             background-color: #B7B7B7;
         }
+        .shotime-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 140px;
+            border: #000 solid 2px;
+            border-radius: 20px;
+            position: relative;
+            margin: 0 100px;
+            color: #000;
+            font-size: 4.6em;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+        .shotime-container .container span{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1em;
+            color: #333;
+            /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
+        }
+        .shotime-container .decrement {
+            position: absolute;
+            bottom: 2px;
+            font-size: 0.4em;
+            cursor: pointer;
+            color: #333;
+            background-color: #ddd;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .shotime-container:hover .decrement{
+            cursor: pointer;
+            display: flex;
+            top: 4em;
+        }
         span {
             display: flex;
             position: relative;
@@ -165,33 +215,14 @@
             font-weight: bold;
             color: #333;
         }
-        .start-reset{
-            display: flex;
-            font-size: 0.8em;
-            font-weight: bold;
-            gap: 10px;
-            color: #333;
-        }
-        .start-pause{
-            cursor: pointer;
-        }
-        .reset{
-            cursor: pointer;
-        }
-        .vertical-line {
-            width: 2px;
-            height: 30px;
-            background-color: #333;
-            margin: 0 auto;
-        }
         footer {
             background-color: #4F4A45;
             color: #fff;
             padding: 32px 0;
             text-align: center;
             width: 100%;
-            position: absolute;
             bottom: 0;
+            position: relative;
         }
     </style>
 </head>
@@ -205,9 +236,7 @@
         <a href="score-voli.php">Voli</a>
         <a href="score-basket.php" style="color: #ED7D31;">Basket</a>
     </div>
-    <h1>Futsal Match</h1>
     <div class="scoreboard">
-        
         <div class="timer">
             <span class="menit">10</span><span> : </span><span class="detik">00</span>
         </div>
@@ -216,7 +245,7 @@
             <div class="team-score">
                 <div class="team-name red">IF 23</div>
                 <div class="score-container" onclick="tambah('teamAScore')">
-                    <span id="teamAScore" class="score">0</span>
+                    <span id="teamAScore" class="numscore">0</span>
                 </div>
                 <div class="decrement red" onclick="kurang('teamAScore')">-</div>
             </div>
@@ -225,15 +254,16 @@
             <div class="team-score">
                 <div class="team-name blue">IF 21</div>
                 <div class="score-container" onclick="tambah('teamBScore')">
-                    <span id="teamBScore" class="score">0</span>
+                    <span id="teamBScore" class="numscore">0</span>
                 </div>
                 <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
             </div>
         </div>
-        <div class="start-reset">
-            <span class="start-pause">Start</span>
-            <div class="vertical-line"></div>
-            <span class="reset">reset</span>
+        <div class="shotime-container">
+                <div class="container" onclick="shotime()">
+                    <span id="shotime" class="shotime">24</span>
+                </div>
+                <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
         </div>
     </div>
     <footer>
@@ -243,9 +273,7 @@
         let menit = 10;
         let detik = 0;
         let timerInterval = null;
-        const startPauseButton = document.querySelector(".start-pause");
-        const resetButton = document.querySelector(".reset");
-        const timerButton = document.querySelector(".timer");
+        const timerElement = document.querySelector(".timer");
 
         function updateTimerDisplay() {
             const menitElement = document.querySelector(".menit");
@@ -258,16 +286,12 @@
             if (timerInterval) {
                 clearInterval(timerInterval);
                 timerInterval = null;
-                startPauseButton.textContent = "Start";
             } else {
-                startPauseButton.textContent = "Pause";
                 timerInterval = setInterval(() => {
                     if (menit === 0 && detik === 0) {
                         clearInterval(timerInterval);
                         alert("Waktu habis!");
                         timerInterval = null;
-                        startPauseButton.textContent = "Start";
-                        startPauseButton.addEventListener("click", toggleTimer);
                         return;
                     }
                     if (detik === 0) {
@@ -281,21 +305,7 @@
             }
         }
 
-        function resetTimer() {
-            clearInterval(timerInterval);
-            timerInterval = null;
-            startPauseButton.textContent = "Start";
-
-            menit = 10;
-            detik = 0;
-
-            updateTimerDisplay();
-        }
-
-        startPauseButton.addEventListener("click", toggleTimer);
-        resetButton.addEventListener("click", resetTimer);
-        timerButton.addEventListener("click", toggleTimer);
-
+        timerElement.addEventListener("click", toggleTimer);
         updateTimerDisplay();
 
         function tambah(elementId) {

@@ -66,6 +66,9 @@
             padding: 10px 18px;
             border-radius: 10px;
         }
+        .timer:hover{
+            cursor: pointer;
+        }
         .score{
             display: flex;
             margin: 4px 0 40px 0;

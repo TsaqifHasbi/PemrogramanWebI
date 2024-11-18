@@ -92,6 +92,10 @@
             text-align: center;
             width: 30%;
         }
+
+        .feature:hover {
+            cursor: pointer;
+        }
         .feature img {
             width: 80px;
             margin-bottom: 15px;
