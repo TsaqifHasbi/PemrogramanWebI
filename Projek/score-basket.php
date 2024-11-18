@@ -200,10 +200,10 @@
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
-        <a href="score-futsal.php" style="color: #ED7D31;">Futsal</a>
+        <a href="score-futsal.php">Futsal</a>
         <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php">Voli</a>
-        <a href="score-basket.php">Basket</a>
+        <a href="score-basket.php" style="color: #ED7D31;">Basket</a>
     </div>
     <h1>Futsal Match</h1>
     <div class="scoreboard">
@@ -214,7 +214,7 @@
         <div class="score">
             <!--Red-->
             <div class="team-score">
-                <div class="team-name red">IF</div>
+                <div class="team-name red">IF 23</div>
                 <div class="score-container" onclick="tambah('teamAScore')">
                     <span id="teamAScore" class="score">0</span>
                 </div>
@@ -223,7 +223,7 @@
             <span>vs</span>
             <!--Blue-->
             <div class="team-score">
-                <div class="team-name blue">IF</div>
+                <div class="team-name blue">IF 21</div>
                 <div class="score-container" onclick="tambah('teamBScore')">
                     <span id="teamBScore" class="score">0</span>
                 </div>
