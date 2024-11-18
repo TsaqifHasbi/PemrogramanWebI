@@ -174,21 +174,33 @@
             color: #000;
             font-size: 4.6em;
             font-weight: bold;
-            text-align: center;
             cursor: pointer;
+        }
+        .shotime-container .container{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .shotime-container .container span{
             display: flex;
+            position: absolute;
             align-items: center;
             justify-content: center;
             font-size: 1em;
             color: #333;
             /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
         }
-        .shotime-container .decrement {
-            position: absolute;
-            bottom: 2px;
-            font-size: 0.4em;
+        .shotime-manage{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            display: none;
+            top: 10px;
+        }
+        .nol, .half, .full {
+            position: relative;
+            font-size: 0.2em;
             cursor: pointer;
             color: #333;
             background-color: #ddd;
@@ -201,10 +213,19 @@
             text-align: center;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .shotime-container:hover .decrement{
+        .shotime-container:hover .nol, .half, .full{
             cursor: pointer;
             display: flex;
+            gap: 10px;
             top: 4em;
+        }
+        .nol:hover, .half:hover, .full:hover{
+            background-color: #B7B7B7;
+        }
+        .shotime-container:hover .shotime-manage{
+            cursor: pointer;
+            display: flex;
+            gap: 10px;
         }
         span {
             display: flex;
@@ -263,7 +284,11 @@
                 <div class="container" onclick="shotime()">
                     <span id="shotime" class="shotime">24</span>
                 </div>
-                <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
+                <div class="shotime-manage">
+                    <span class="nol">0</span>
+                    <span class="half">14</span>
+                    <span class="full">24</span>
+                </div>
         </div>
     </div>
     <footer>
@@ -273,7 +298,12 @@
         let menit = 10;
         let detik = 0;
         let timerInterval = null;
+        let shotime = 24;
+        let shotimeInterval = null;
         const timerElement = document.querySelector(".timer");
+        const shotimeElement = document.querySelector("#shotime");
+        const shotimeContainer = document.querySelector(".shotime-container");
+        const shotimeManageElements = document.querySelectorAll(".shotime-manage span");
 
         function updateTimerDisplay() {
             const menitElement = document.querySelector(".menit");
@@ -282,16 +312,24 @@
             detikElement.textContent = detik.toString().padStart(2, "0");
         }
 
+        function updateShotimeDisplay() {
+            shotimeElement.textContent = shotime.toString().padStart(2, "0");
+        }
+
         function toggleTimer() {
             if (timerInterval) {
                 clearInterval(timerInterval);
+                clearInterval(shotimeInterval);
                 timerInterval = null;
+                shotimeInterval = null;
             } else {
                 timerInterval = setInterval(() => {
                     if (menit === 0 && detik === 0) {
                         clearInterval(timerInterval);
+                        clearInterval(shotimeInterval);
                         alert("Waktu habis!");
                         timerInterval = null;
+                        shotimeInterval = null;
                         return;
                     }
                     if (detik === 0) {
@@ -302,11 +340,47 @@
                     }
                     updateTimerDisplay();
                 }, 1000);
+
+                shotimeInterval = setInterval(() => {
+                    if (shotime === 0) {
+                        shotime = 24; // Reset shotime jika mencapai 0
+                    } else {
+                        shotime--;
+                    }
+                    updateShotimeDisplay();
+                }, 1000);
             }
         }
 
+        shotimeContainer.addEventListener("click", (event) => {
+            if (event.target === shotimeContainer) {
+                shotime = 24;
+                updateShotimeDisplay();
+            }
+        });
+
+        document.querySelector(".nol").addEventListener("click", () => {
+            shotime = 0;
+            updateShotimeDisplay();
+            clearInterval(timerInterval);
+            clearInterval(shotimeInterval);
+            timerInterval = null;
+            shotimeInterval = null;
+        });
+
+        document.querySelector(".half").addEventListener("click", () => {
+            shotime = 14;
+            updateShotimeDisplay();
+        });
+
+        document.querySelector(".full").addEventListener("click", () => {
+            shotime = 24;
+            updateShotimeDisplay();
+        });
+        
         timerElement.addEventListener("click", toggleTimer);
         updateTimerDisplay();
+        updateShotimeDisplay();
 
         function tambah(elementId) {
             const scoreElement = document.getElementById(elementId);
