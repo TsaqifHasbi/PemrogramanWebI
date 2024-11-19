@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScoreHub - Futsal</title>
+    <title>ScoreHub - Basket</title>
     <link rel="shotcut icon" href="Gambar/logo.png">
     <style>
         * {

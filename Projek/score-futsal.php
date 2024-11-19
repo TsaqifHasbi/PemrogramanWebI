@@ -191,8 +191,11 @@
         .reset{
             cursor: pointer;
         }
+        .save{
+            cursor: pointer;
+        }
         .vertical-line {
-            width: 2px;
+            width: 3px;
             height: 30px;
             background-color: #333;
             margin: 0 auto;
@@ -247,6 +250,8 @@
             <span class="start-pause"><i class='bx bxs-right-arrow'></i></span>
             <div class="vertical-line"></div>
             <span class="reset"><i class='bx bx-revision'></i></span>
+            <div class="vertical-line"></div>
+            <span class="save"><i class='bx bx-save'></i></span>
         </div>
     </div>
     <footer>
