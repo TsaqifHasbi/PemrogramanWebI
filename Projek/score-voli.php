@@ -225,7 +225,7 @@
             padding: 32px 0;
             text-align: center;
             width: 100%;
-            position: absolute;
+            position: relative;
             bottom: 0;
         }
     </style>
@@ -278,6 +278,20 @@
             </div>
             <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
         </div>
+    </div>
+    <div class="history">
+        <h2>History Pertandingan</h2>
+        <?php
+        if (isset($_SESSION['match_history']) && count($_SESSION['match_history']) > 0) {
+            echo "<table>";
+            foreach ($_SESSION['match_history'] as $match) {
+                echo "<tr><td class='history-team red'>" .$match['team_a_name']. "</><td class='history-score red'>" .$match['team_a_score']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_score']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "No match history available.";
+        }
+        ?>
     </div>
     <footer>
         © 2024 ScoreHub. All rights reserved.

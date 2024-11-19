@@ -198,11 +198,11 @@ session_start();
             cursor: pointer;
         }
         button {
-            border: none;/* Menghilangkan border */
-            outline: none; /* Menghilangkan outline saat fokus */
-            background:  none; /* Warna latar belakang tombol */
-            color: #000; /* Warna teks */
-            cursor: pointer; /* Menambahkan pointer saat hover */ 
+            border: none;
+            outline: none;
+            background:  none;
+            color: #000; 
+            cursor: pointer; 
             font-size: 24px;
             display: flex;
             align-items: center;
@@ -340,10 +340,10 @@ session_start();
     <div class="history">
         <h2>History Pertandingan</h2>
         <?php
-        if (isset($_SESSION['match_history']) && count($_SESSION['match_history']) > 0) {
+        if (isset($_SESSION['match_history_futsal']) && count($_SESSION['match_history_futsal']) > 0) {
             echo "<table>";
-            foreach ($_SESSION['match_history'] as $match) {
-                echo "<tr><td class='history-team red'>" .$match['team_a_name']. "</><td class='history-score red'>" .$match['team_a_score']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_score']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
+            foreach ($_SESSION['match_history_futsal'] as $match) {
+                echo "<tr><td class='history-team red'>" .$match['team_a_name']. "</td><td class='history-score red'>" .$match['team_a_score']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_score']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
             }
             echo "</table>";
         } else {
@@ -396,7 +396,7 @@ session_start();
             }
         }
 
-        function resetTimer() {
+        function reset() {
             clearInterval(timerInterval);
             timerInterval = null;
             startPauseButton.innerHTML = "<i class='bx bxs-right-arrow'></i>";
@@ -404,11 +404,15 @@ session_start();
             menit = 10;
             detik = 0;
 
+            document.getElementById("teamAScoreInput").value = 0;
+            document.getElementById("teamBScoreInput").value = 0;
+            document.getElementById("teamAScore").innerText = 0;
+            document.getElementById("teamBScore").innerText = 0;
             updateTimerDisplay();
         }
 
         startPauseButton.addEventListener("click", toggleTimer);
-        resetButton.addEventListener("click", resetTimer);
+        resetButton.addEventListener("click", reset);
         timerButton.addEventListener("click", toggleTimer);
 
         updateTimerDisplay();
