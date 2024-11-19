@@ -125,7 +125,7 @@ session_start();
             background-color: #ff5c5c;
         }
         .team-score .team-name.blue {
-            background-color: #5c9eff;
+            background-color: #3FA3FF;
         }
         .score span {
             display: flex;
@@ -197,9 +197,18 @@ session_start();
         .reset {
             cursor: pointer;
         }
-        .save {
-            cursor: pointer;
+        button {
+            border: none;/* Menghilangkan border */
+            outline: none; /* Menghilangkan outline saat fokus */
+            background:  none; /* Warna latar belakang tombol */
+            color: #000; /* Warna teks */
+            cursor: pointer; /* Menambahkan pointer saat hover */ 
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
+
         .vertical-line {
             width: 3px;
             height: 30px;
@@ -217,11 +226,59 @@ session_start();
         }
         table {
             border-collapse: collapse;
-            width: 100%;
-            margin: 0 0 48px 0;
+            display: flex;
+            margin: 0 0 40px 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 14px;
+            overflow: hidden;
         }
-        .tengah{
+        .history-team.red{
+            color: #FF453A;
+            text-align: right;
+            width: 15em;
+            padding-right: 20px;
+        }
+        .history-team.blue{
+            color: #3FA3FF;
+            text-align: left;
+            width: 15em;
+            padding-left: 20px;
+        }
+        .history-score{
             text-align: center;
+        }
+        .tengah{ 
+            text-align: center;
+        }
+        .small{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        tr, td{
+            border: none;
+        }
+        tr:nth-child(odd) td{
+            padding-top: 16px;
+        }
+        tr:nth-child(even) td{
+            padding-bottom: 16px;
+        }
+        tr:nth-of-type(4n-3),
+        tr:nth-of-type(4n-2) {
+            background-color: #4F4A45; /* gelap */
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        tr:nth-of-type(4n-1),
+        tr:nth-of-type(4n) {
+            background-color: #B5AA9E; /* terang */
+            color: #ffffff;
+            margin: 10px 0;
         }
         footer {
             background-color: #4F4A45;
@@ -284,9 +341,9 @@ session_start();
         <h2>History Pertandingan</h2>
         <?php
         if (isset($_SESSION['match_history']) && count($_SESSION['match_history']) > 0) {
-            echo "<table border='1'><tr><th>Team A Name</th><th>Team A Score</th><th>-</th><th>Team B Score</th><th>Team B Name</th></tr><tr><th colspan='5'>Match Date</th></tr>";
+            echo "<table>";
             foreach ($_SESSION['match_history'] as $match) {
-                echo "<tr><td>" . $match['team_a_name'] . "</td><td>" . $match['team_a_score'] . "</td><td>-</td><td>" . $match['team_b_score'] . "</td><td>" . $match['team_b_name'] . "</td></tr><tr><td class='tengah' colspan='5'>" . $match['match_date'] . "</td></tr>";
+                echo "<tr><td class='history-team red'>" .$match['team_a_name']. "</><td class='history-score red'>" .$match['team_a_score']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_score']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
             }
             echo "</table>";
         } else {
