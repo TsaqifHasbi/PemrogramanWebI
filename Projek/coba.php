@@ -244,7 +244,7 @@
     <div class="scoreboard">
         <!--Red-->
         <div class="team-score">
-            <input type="text" id="teamAName" maxlength="20" value="Home" class="team-name red" oninput="updateTeamName('teamAName', 'teamANameDisplay')">
+        <input type="text" id="teamAName" maxlength="20" value="Home" class="team-name red" oninput="updateTeamName('teamAName', 'teamANameDisplay')">
             <div class="score-container" onclick="tambah('teamAScore')">
                 <span id="teamAScore" class="score">0</span>
             </div>
@@ -272,7 +272,7 @@
         </div>
         <!--Blue-->
         <div class="team-score">
-            <input type="text" id="teamBName" maxlength="20" value="Away" class="team-name blue" oninput="updateTeamName('teamBName', 'teamBNameDisplay')">
+        <input type="text" id="teamBName" maxlength="20" value="Away" class="team-name blue" oninput="updateTeamName('teamBName', 'teamBNameDisplay')">
             <div class="score-container" onclick="tambah('teamBScore')">
                 <span id="teamBScore" class="score">0</span>
             </div>

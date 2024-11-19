@@ -99,10 +99,17 @@
             position: absolute;
             top: -32px;
             padding: 5px 20px;
-            font-size: 0.6em;
+            font-size: 0.2em;
             font-weight: bold;
             color: #fff;
             border-radius: 5px;
+            border: none;
+            width: 7em;
+            height: 4em;
+            text-align: center;
+        }
+        .team-score .team-name:focus {
+            outline: none;
         }
         .team-score .team-name.red {
             background-color: #ff5c5c;
@@ -134,6 +141,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 240px;
+            height: 240px;
         }
         .team-score .option {
             display: flex;
@@ -280,13 +289,13 @@
         <a href="score-basket.php" style="color: #ED7D31;">Basket</a>
     </div>
     <div class="scoreboard">
-        <div class="timer">
+        <div class="timer" onclick="timer()">
             <span class="menit">10</span><span> : </span><span class="detik">00</span>
         </div>
         <div class="score">
             <!--Red-->
             <div class="team-score">
-                <div class="team-name red">IF 23</div>
+            <input type="text" id="teamAName" maxlength="20" value="Home" class="team-name red" oninput="updateTeamName('teamAName', 'teamANameDisplay')">
                 <div class="score-container" onclick="tambah('teamAScore')">
                     <span id="teamAScore" class="numscore">0</span>
                 </div>
@@ -299,7 +308,7 @@
             <span>vs</span>
             <!--Blue-->
             <div class="team-score">
-                <div class="team-name blue">IF 21</div>
+            <input type="text" id="teamBName" maxlength="20" value="Away" class="team-name blue" oninput="updateTeamName('teamBName', 'teamBNameDisplay')">
                 <div class="score-container" onclick="tambah('teamBScore')">
                     <span id="teamBScore" class="numscore">0</span>
                 </div>
@@ -325,124 +334,128 @@
         © 2024 ScoreHub. All rights reserved.
     </footer>
     <script>
-        let menit = 10;
-        let detik = 0;
-        let timerInterval = null;
-        let shotime = 24;
-        let shotimeInterval = null;
-        const timerElement = document.querySelector(".timer");
-        const shotimeElement = document.querySelector(".shotime");
-        const shotimeContainer = document.querySelector(".shotime-container");
-        const shotimeManageElements = document.querySelectorAll(".shotime-manage span");
+    let menit = 10;
+    let detik = 0;
+    let timerInterval = null;
+    let shotime = 24;
+    let shotimeInterval = null;
+    const timerElement = document.querySelector(".timer");
+    const shotimeElement = document.querySelector("#shotime");
+    const shotimeContainer = document.querySelector(".shotime-container");
+    const shotimeCont = document.querySelector(".shotime-container .container");
 
-        function updateTimerDisplay() {
-            const menitElement = document.querySelector(".menit");
-            const detikElement = document.querySelector(".detik");
-            menitElement.textContent = menit.toString().padStart(2, "0");
-            detikElement.textContent = detik.toString().padStart(2, "0");
-        }
+    function updateTimerDisplay() {
+        const menitElement = document.querySelector(".menit");
+        const detikElement = document.querySelector(".detik");
+        menitElement.textContent = menit.toString().padStart(2, "0");
+        detikElement.textContent = detik.toString().padStart(2, "0");
+    }
 
-        function updateShotimeDisplay() {
-            shotimeElement.textContent = shotime.toString().padStart(2, "0");
-        }
+    function updateShotimeDisplay() {
+        shotimeElement.textContent = shotime.toString().padStart(2, "0");
+    }
 
-        function toggleTimer() {
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                clearInterval(shotimeInterval);
-                timerInterval = null;
-                shotimeInterval = null;
-            } else {
-                timerInterval = setInterval(() => {
-                    if (menit === 0 && detik === 0) {
-                        clearInterval(timerInterval);
-                        clearInterval(shotimeInterval);
-                        alert("Waktu habis!");
-                        timerInterval = null;
-                        shotimeInterval = null;
-                        return;
-                    }
-                    if (detik === 0) {
-                        menit--;
-                        detik = 59;
-                    } else {
-                        detik--;
-                    }
-                    updateTimerDisplay();
-                }, 1000);
-
-                shotimeInterval = setInterval(() => {
-                    if (shotime === 0) {
-                        shotime = 24; // Reset shotime jika mencapai 0
-                    } else {
-                        shotime--;
-                    }
-                    updateShotimeDisplay();
-                }, 1000);
-            }
-        }
-
-        shotimeContainer.addEventListener("click", (event) => {
-            if (event.target === shotimeContainer) {
-                shotime = 24;
-                updateShotimeDisplay();
-            }
-        });
-
-        document.querySelector(".nol").addEventListener("click", () => {
-            shotime = 0;
-            updateShotimeDisplay();
+    function toggleTimer() {
+        if (timerInterval) {
             clearInterval(timerInterval);
             clearInterval(shotimeInterval);
             timerInterval = null;
             shotimeInterval = null;
-        });
+        } else {
+            timerInterval = setInterval(() => {
+                if (menit === 0 && detik === 0) {
+                    clearInterval(timerInterval);
+                    clearInterval(shotimeInterval);
+                    alert("Waktu habis!");
+                    timerInterval = null;
+                    shotimeInterval = null;
+                    return;
+                }
+                if (detik === 0) {
+                    menit--;
+                    detik = 59;
+                } else {
+                    detik--;
+                }
+                updateTimerDisplay();
+            }, 1000);
 
-        document.querySelector(".half").addEventListener("click", () => {
-            shotime = 14;
-            updateShotimeDisplay();
-        });
+            shotimeInterval = setInterval(() => {
+                if (shotime === 0) {
+                    shotime = 24; // Reset shotime jika mencapai 0
+                } else {
+                    shotime--;
+                }
+                updateShotimeDisplay();
+            }, 1000);
+        }
+    }
 
-        document.querySelector(".full").addEventListener("click", () => {
+    shotimeContainer.addEventListener("click", (event) => {
+        if (event.target === shotimeContainer) {
             shotime = 24;
             updateShotimeDisplay();
-        });
-        
-        timerElement.addEventListener("click", toggleTimer);
-        updateTimerDisplay();
+        }
+    });
+    shotimeCont.addEventListener("click", () => {
+        shotime = 24;
         updateShotimeDisplay();
+    });
 
-        function tambah(elementId) {
-            const scoreElement = document.getElementById(elementId);
-            let currentScore = parseInt(scoreElement.innerText);
-            scoreElement.innerText = currentScore + 1;
-            const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
-            const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
-        }
 
-        function tambah2(elementId) {
-            const scoreElement = document.getElementById(elementId);
-            let currentScore = parseInt(scoreElement.innerText);
-            scoreElement.innerText = currentScore + 2;
-            const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
-            const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
-        }
+    document.querySelector(".nol").addEventListener("click", () => {
+        shotime = 0;
+        updateShotimeDisplay();
+        clearInterval(timerInterval);
+        clearInterval(shotimeInterval);
+        timerInterval = null;
+        shotimeInterval = null;
+    });
 
-        function tambah3(elementId) {
-            const scoreElement = document.getElementById(elementId);
-            let currentScore = parseInt(scoreElement.innerText);
-            scoreElement.innerText = currentScore + 3;
-            const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
-            const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
-        }
+    document.querySelector(".half").addEventListener("click", () => {
+        shotime = 14;
+        updateShotimeDisplay();
+    });
 
-        function kurang(elementId) {
-            const scoreElement = document.getElementById(elementId);
-            let currentScore = parseInt(scoreElement.innerText);
-            if (currentScore > 0) {
-                scoreElement.innerText = currentScore - 1;
-            }
+    document.querySelector(".full").addEventListener("click", () => {
+        shotime = 24;
+        updateShotimeDisplay();
+    });
+
+    timerElement.addEventListener("click", toggleTimer);
+    updateTimerDisplay();
+    updateShotimeDisplay();
+
+    function tambah(elementId) {
+        const scoreElement = document.getElementById(elementId);
+        let currentScore = parseInt(scoreElement.innerText);
+        scoreElement.innerText = currentScore + 1;
+    }
+
+    function tambah2(elementId) {
+        const scoreElement = document.getElementById(elementId);
+        let currentScore = parseInt(scoreElement.innerText);
+        scoreElement.innerText = currentScore + 2;
+    }
+
+    function tambah3(elementId) {
+        const scoreElement = document.getElementById(elementId);
+        let currentScore = parseInt(scoreElement.innerText);
+        scoreElement.innerText = currentScore + 3;
+    }
+
+    function kurang(elementId) {
+        const scoreElement = document.getElementById(elementId);
+        let currentScore = parseInt(scoreElement.innerText);
+        if (currentScore > 0) {
+            scoreElement.innerText = currentScore - 1;
         }
-    </script>
+    }
+    function updateTeamName(inputId, displayId) {
+        const inputElement = document.getElementById(inputId);
+        const displayElement = document.getElementById(displayId);
+        displayElement.innerText = inputElement.value;
+    }
+</script>
 </body>
 </html>

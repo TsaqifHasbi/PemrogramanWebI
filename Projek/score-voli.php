@@ -83,11 +83,18 @@
             position: absolute;
             top: -32px;
             padding: 5px 20px;
-            font-size: 0.6em;
+            font-size: 0.2em;
             font-weight: bold;
             color: #fff;
             border-radius: 5px;
+            border: none;
+            width: 7em;
+            height: 4em;
+            text-align: center;
         }
+        .team-score .team-name:focus {
+            outline: none;
+        }        
         .team-score .team-name.red {
             background-color: #ff5c5c;
         }
@@ -237,7 +244,7 @@
     <div class="scoreboard">
         <!--Red-->
         <div class="team-score">
-            <div class="team-name red">IF</div>
+            <input type="text" id="teamAName" maxlength="20" value="Home" class="team-name red" oninput="updateTeamName('teamAName', 'teamANameDisplay')">
             <div class="score-container" onclick="tambah('teamAScore')">
                 <span id="teamAScore" class="score">0</span>
             </div>
@@ -265,7 +272,7 @@
         </div>
         <!--Blue-->
         <div class="team-score">
-            <div class="team-name blue">IF</div>
+            <input type="text" id="teamBName" maxlength="20" value="Away" class="team-name blue" oninput="updateTeamName('teamBName', 'teamBNameDisplay')">
             <div class="score-container" onclick="tambah('teamBScore')">
                 <span id="teamBScore" class="score">0</span>
             </div>
@@ -306,7 +313,11 @@
                 scoreElement.innerText = currentScore - 1;
             }
         }
-
+        function updateTeamName(inputId, displayId) {
+            const inputElement = document.getElementById(inputId);
+            const displayElement = document.getElementById(displayId);
+            displayElement.innerText = inputElement.value;
+        }
     </script>
 </body>
 </html>
