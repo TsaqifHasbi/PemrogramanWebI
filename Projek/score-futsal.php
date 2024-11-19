@@ -1,12 +1,15 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScoreHub - Futsal</title>
-    <link rel="shotcut icon" href="Gambar/logo.png">
+    <link rel="shortcut icon" href="Gambar/logo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel='stylesheet'>
 
     <style>
         * {
@@ -23,9 +26,6 @@
             flex-direction: column;
             align-items: center;
             user-select: none;
-            /*overflow-y: scroll;
-            -ms-overflow-style: none;
-            scrollbar-width: none;*/
         }
         .navbar {
             background-color: #4F4A45;
@@ -41,15 +41,15 @@
             text-decoration: none;
             font-weight: bold;
         }
-        .navbar a:hover{
+        .navbar a:hover {
             color: #ED7D31;
             text-decoration: none;
             font-weight: bold;
         }
-        .navbar .logo img{
+        .navbar .logo img {
             width: 35px;
         }
-        h1{
+        h1 {
             margin-top: 48px;
         }
         .scoreboard {
@@ -59,17 +59,26 @@
             align-items: center;
             margin: 28px 0;
         }
-        .timer{
+        form{
             display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .timer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin: 0 0 40px 0;
             border: #000 solid 2px;
             padding: 10px 18px;
             border-radius: 10px;
+            text-align: center;
         }
-        .timer:hover{
+        .timer:hover {
             cursor: pointer;
         }
-        .score{
+        .score {
             display: flex;
             margin: 4px 0 40px 0;
         }
@@ -89,9 +98,8 @@
             font-weight: bold;
             text-align: center;
             cursor: pointer;
-            /*box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);*/
         }
-        .team-score:hover .score{
+        .team-score:hover .score {
             cursor: pointer;
             font-size: 2.8em;
             font-weight: bold;
@@ -116,11 +124,10 @@
         .team-score .team-name.red {
             background-color: #ff5c5c;
         }
-
         .team-score .team-name.blue {
             background-color: #5c9eff;
         }
-        .score span{
+        .score span {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -132,9 +139,8 @@
             justify-content: center;
             width: 240px;
             height: 240px;
-            background-color: linear-gradient(to top, #ccc, #999);;
+            background-color: linear-gradient(to top, #ccc, #999);
             border-radius: 10px;
-            /*box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);*/
         }
         .team-score .score {
             font-size: 2.5em;
@@ -156,12 +162,12 @@
             text-align: center;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         }
-        .team-score:hover .decrement.red{
+        .team-score:hover .decrement.red {
             cursor: pointer;
             display: flex;
             left: 210px;
         }
-        .team-score:hover .decrement.blue{
+        .team-score:hover .decrement.blue {
             cursor: pointer;
             display: flex;
             right: 210px;
@@ -178,20 +184,20 @@
             font-weight: bold;
             color: #333;
         }
-        .start-reset{
+        .start-reset {
             display: flex;
             font-size: 0.8em;
             font-weight: bold;
             gap: 16px;
             color: #333;
         }
-        .start-pause{
+        .start-pause {
             cursor: pointer;
         }
-        .reset{
+        .reset {
             cursor: pointer;
         }
-        .save{
+        .save {
             cursor: pointer;
         }
         .vertical-line {
@@ -200,13 +206,30 @@
             background-color: #333;
             margin: 0 auto;
         }
+        .history{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .history h2 {
+            margin: 48px 0 24px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0 0 48px 0;
+        }
+        .tengah{
+            text-align: center;
+        }
         footer {
             background-color: #4F4A45;
             color: #fff;
             padding: 32px 0;
             text-align: center;
             width: 100%;
-            position: absolute;
+            position: relative;
             bottom: 0;
         }
     </style>
@@ -223,36 +246,53 @@
     </div>
     <h1>Futsal Match</h1>
     <div class="scoreboard">
-        
-        <div class="timer">
-            <span class="menit">10</span><span> : </span><span class="detik">00</span>
-        </div>
-        <div class="score">
-            <!--Red-->
-            <div class="team-score">
-            <input type="text" id="teamAName" maxlength="20" value="Home" class="team-name red" oninput="updateTeamName('teamAName', 'teamANameDisplay')">
-                <div class="score-container" onclick="tambah('teamAScore')">
-                    <span id="teamAScore" class="score">0</span>
-                </div>
-                <div class="decrement red" onclick="kurang('teamAScore')">-</div>
+        <form action="savematch-history-futsal.php" method="POST">
+            <div class="timer">
+                <span class="menit">10</span><span> : </span><span class="detik">00</span>
             </div>
-            <span>vs</span>
-            <!--Blue-->
-            <div class="team-score">
-            <input type="text" id="teamBName" maxlength="20" value="Away" class="team-name blue" oninput="updateTeamName('teamBName', 'teamBNameDisplay')">
-                <div class="score-container" onclick="tambah('teamBScore')">
-                    <span id="teamBScore" class="score">0</span>
+            <div class="score">
+                <!--Red-->
+                <div class="team-score">
+                    <input type="text" id="teamAName" name="team_a_name" maxlength="20" value="Home" class="team-name red">
+                    <div class="score-container" onclick="tambah('teamAScore')">
+                        <span id="teamAScore" class="score">0</span>
+                        <input type="hidden" id="teamAScoreInput" name="team_a_score" value="0">
+                    </div>
+                    <div class="decrement red" onclick="kurang('teamAScore')">-</div>
                 </div>
-                <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
+                <span>vs</span>
+                <!--Blue-->
+                <div class="team-score">
+                    <input type="text" id="teamBName" name="team_b_name" maxlength="20" value="Away" class="team-name blue">
+                    <div class="score-container" onclick="tambah('teamBScore')">
+                        <span id="teamBScore" class="score">0</span>
+                        <input type="hidden" id="teamBScoreInput" name="team_b_score" value="0">
+                    </div>
+                    <div class="decrement blue" onclick="kurang('teamBScore')">-</div>
+                </div>
             </div>
-        </div>
-        <div class="start-reset">
-            <span class="start-pause"><i class='bx bxs-right-arrow'></i></span>
-            <div class="vertical-line"></div>
-            <span class="reset"><i class='bx bx-revision'></i></span>
-            <div class="vertical-line"></div>
-            <span class="save"><i class='bx bx-save'></i></span>
-        </div>
+            <div class="start-reset">
+                <span class="start-pause"><i class='bx bxs-right-arrow'></i></span>
+                <div class="vertical-line"></div>
+                <span class="reset"><i class='bx bx-revision'></i></span>
+                <div class="vertical-line"></div>
+                <button type="submit" class="save"><i class='bx bx-save'></i></button>
+            </div>
+        </form>
+    </div>
+    <div class="history">
+        <h2>History Pertandingan</h2>
+        <?php
+        if (isset($_SESSION['match_history']) && count($_SESSION['match_history']) > 0) {
+            echo "<table border='1'><tr><th>Team A Name</th><th>Team A Score</th><th>-</th><th>Team B Score</th><th>Team B Name</th></tr><tr><th colspan='5'>Match Date</th></tr>";
+            foreach ($_SESSION['match_history'] as $match) {
+                echo "<tr><td>" . $match['team_a_name'] . "</td><td>" . $match['team_a_score'] . "</td><td>-</td><td>" . $match['team_b_score'] . "</td><td>" . $match['team_b_name'] . "</td></tr><tr><td class='tengah' colspan='5'>" . $match['match_date'] . "</td></tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "No match history available.";
+        }
+        ?>
     </div>
     <footer>
         © 2024 ScoreHub. All rights reserved.
@@ -285,7 +325,7 @@
                         alert("Waktu habis!");
                         timerInterval = null;
                         startPauseButton.innerHTML = "<i class='bx bxs-right-arrow'></i>";
-                        startPauseButton.addEventListener("click", toggleTimer);
+                        document.querySelector("form").submit();
                         return;
                     }
                     if (detik === 0) {
@@ -320,8 +360,7 @@
             const scoreElement = document.getElementById(elementId);
             let currentScore = parseInt(scoreElement.innerText);
             scoreElement.innerText = currentScore + 1;
-            const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
-            const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
+            document.getElementById(elementId + "Input").value = currentScore + 1;
         }
 
         function kurang(elementId) {
@@ -329,12 +368,8 @@
             let currentScore = parseInt(scoreElement.innerText);
             if (currentScore > 0) {
                 scoreElement.innerText = currentScore - 1;
+                document.getElementById(elementId + "Input").value = currentScore - 1;
             }
-        }
-        function updateTeamName(inputId, displayId) {
-            const inputElement = document.getElementById(inputId);
-            const displayElement = document.getElementById(displayId);
-            displayElement.innerText = inputElement.value;
         }
     </script>
 </body>
