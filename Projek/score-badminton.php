@@ -292,7 +292,7 @@ session_start();
             justify-content: center;
             margin: 0;
             padding: 0;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 1s ease-in-out;
         }
 
         .resub span:hover i, .resub button:hover i {
