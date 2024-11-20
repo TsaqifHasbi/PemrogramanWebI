@@ -56,7 +56,7 @@ session_start();
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 56px 0;
+            margin: 48px 0;
         }
         form {
             display: flex;
@@ -226,60 +226,92 @@ session_start();
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 20px 0;
+            margin: 18px 0 16px 0;
         }
         .setboard .team-set {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 300px;
-            height: 140px;
+            width: 360px;
+            height: 200px;
             background: linear-gradient(to top, #cccccc, #4F4A45);
             border-radius: 20px;
             position: relative;
-            margin: 0 48px 24px 48px;
+            margin: 0 48px 12px 48px;
             color: #000;
             font-size: 1.6em;
             font-weight: bold;
             text-align: center;
-            gap: 8px;
         }
         .setboard .team-set input{
             border-radius: 5px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .setboard .team-set label{
+            font-size: 0.5em;
+        }
+        .setboard .team-set .result-box{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 6px;
+            width: 160px;
+            height: 46px;
+            position: absolute;
+            top: -32px;
+        }
+        .setboard .team-set .result-box.red{
+            background-color: #ff5c5c;
+        }
+        .setboard .team-set .result-box.blue{
+            background-color: #5c9eff;
         }
         .resub {
             display: flex;
             font-size: 0.8em;
             font-weight: bold;
-            gap: 16px;
+            gap: 20px;
             color: #333;
         }
+        
         .resub span {
             display: flex;
             position: relative;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             font-size: 2em;
             font-weight: bold;
             color: #333;
         }
-        .vertical-line {
-            width: 3px;
-            height: 30px;
-            background-color: #333;
-            margin: 0 auto;
+        .resub span, .resub button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .resub span:hover i, .resub button:hover i {
+            transform: scale(1.2);
+        }
+
+        .result{
+            cursor: pointer;
         }
         .reset {
             cursor: pointer;
         }
-        button {
+        button{
             border: none;
             outline: none;
             background: none;
-            color: #000;
+            color: #333;
             cursor: pointer;
-            font-size: 24px;
+            font-size: 2em;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -293,7 +325,7 @@ session_start();
         .history h2 {
             margin: 48px 0 24px 0;
         }
-        table {
+        .history table {
             border-collapse: collapse;
             display: flex;
             margin: 0 0 40px 0;
@@ -330,23 +362,87 @@ session_start();
         tr, td {
             border: none;
         }
-        tr:nth-child(odd) td {
+        .history tr:nth-child(odd) td {
             padding-top: 16px;
         }
-        tr:nth-child(even) td {
+        .history tr:nth-child(even) td {
             padding-bottom: 16px;
         }
-        tr:nth-of-type(4n-3),
-        tr:nth-of-type(4n-2) {
+        .history tr:nth-of-type(4n-3),
+        .history tr:nth-of-type(4n-2) {
             background-color: #4F4A45; /* gelap */
             color: #ffffff;
             margin: 10px 0;
+            cursor: pointer;
         }
-        tr:nth-of-type(4n-1),
-        tr:nth-of-type(4n) {
+        .history tr:nth-of-type(4n-1),
+        .history tr:nth-of-type(4n) {
             background-color: #B5AA9E; /* terang */
             color: #ffffff;
             margin: 10px 0;
+            cursor: pointer;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 30%;
+            border-radius: 12px;
+        }
+        .modal-content h2, .modal-content p {
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .modal-content p {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #modalContent table{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /*#modalContent table, #modalContent tr, #modalContent td {
+            border: #000 1px solid;
+        }*/
+        #modalContent table td{
+            text-align: center;
+        }
+        #modalContent table .r, #modalContent table .l{
+            width: 100px;
         }
         footer {
             background-color: #4F4A45;
@@ -416,30 +512,49 @@ session_start();
         <div class="setboard">
             <!-- Red Team -->
             <div class="team-set red">
-                <input type="number" name="team_a_score_set1" placeholder="Set 1" required>
-                <input type="number" name="team_a_score_set2" placeholder="Set 2" required>
-                <input type="number" name="team_a_score_set3" placeholder="Set 3">
+                <div class="result-box red">
+                    <span class="result">Result</span>
+                </div>
+                <label for="team_a_score_set1">set 1</label>
+                <input type="number" id="team_a_score_set1" name="team_a_score_set1" placeholder="Set 1" required readonly>
+                <label for="team_a_score_set2">set 2</label>
+                <input type="number" id="team_a_score_set2" name="team_a_score_set2" placeholder="Set 2" required readonly>
+                <label for="team_a_score_set3">set 3</label>
+                <input type="number" id="team_a_score_set3" name="team_a_score_set3" placeholder="Set 3" required readonly>
             </div>
             <!-- Blue Team -->
             <div class="team-set blue">
-                <input type="number" name="team_b_score_set1" placeholder="Set 1" required>
-                <input type="number" name="team_b_score_set2" placeholder="Set 2" required>
-                <input type="number" name="team_b_score_set3" placeholder="Set 3">
+                <div class="result-box blue">
+                    <span class="result">Result</span>
+                </div>
+                <label for="team_b_score_set1">set 1</label>
+                <input type="number" id="team_b_score_set1" name="team_b_score_set1" placeholder="Set 1" required readonly>
+                <label for="team_b_score_set2">set 2</label>
+                <input type="number" id="team_b_score_set2" name="team_b_score_set2" placeholder="Set 2" required readonly>
+                <label for="team_b_score_set3">set 3</label>
+                <input type="number" id="team_b_score_set3" name="team_b_score_set3" placeholder="Set 3" required readonly>
             </div>
         </div>
         <div class="resub">
+            <span class="result" onclick="result()"><i class='bx bx-list-plus'></i></span>
             <span class="reset" onclick="reset()"><i class='bx bx-revision'></i></span>
-            <div class="vertical-line"></div>
             <button type="submit" class="save"><i class='bx bx-save'></i></button>
         </div>
     </form>
+    <div id="scoreModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Detail Skor</h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
     <div class="history">
         <h2>History Pertandingan</h2>
         <?php
         if (isset($_SESSION['match_history_badminton']) && count($_SESSION['match_history_badminton']) > 0) {
             echo "<table>";
-            foreach ($_SESSION['match_history_badminton'] as $match) {
-                echo "<tr><td class='history-team red'>" .$match['team_a_name']. "</td><td class='history-score red'>" .$match['team_a_score']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_score']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
+            foreach ($_SESSION['match_history_badminton'] as $index => $match) {
+                echo "<tr data-index='$index'><td class='history-team red'>" .$match['team_a_name']. "</td><td class='history-score red'>" .$match['team_a_set']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_set']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
             }
             echo "</table>";
         } else {
@@ -465,28 +580,63 @@ session_start();
                 let currentSet = parseInt(setElement.innerText);
                 setElement.innerText = currentSet + 1;
                 document.getElementById("teamASetInput").value = currentSet + 1;
-                document.getElementById("teamAScore").innerText = 0;
-                document.getElementById("teamBScore").innerText = 0;
-            }
-            if (teamBScore >= 21 && teamBScore >= teamAScore + 2) {
+                saveSetScore(teamAScore, teamBScore);
+                
+            }else if (teamBScore >= 21 && teamBScore >= teamAScore + 2) {
                 const setElement = document.getElementById("teamBSet");
                 let currentSet = parseInt(setElement.innerText);
                 setElement.innerText = currentSet + 1;
                 document.getElementById("teamBSetInput").value = currentSet + 1;
-                document.getElementById("teamAScore").innerText = 0;
-                document.getElementById("teamBScore").innerText = 0;
+                saveSetScore(teamAScore, teamBScore);
             }
         }
 
-        function reset() {
-            document.getElementById("teamAScoreInput").value = 0;
-            document.getElementById("teamBScoreInput").value = 0;
+        function saveSetScore(teamAScore, teamBScore) {
+            let set1a = document.getElementById(`team_a_score_set1`).value;
+            let set1b = document.getElementById(`team_b_score_set1`).value;
+            let set2a = document.getElementById(`team_a_score_set2`).value;
+            let set2b = document.getElementById(`team_b_score_set2`).value;
+            let set3a = document.getElementById(`team_a_score_set3`).value;
+            let set3b = document.getElementById(`team_b_score_set3`).value;
+
+            if (!set1a && !set1b) {
+                document.getElementById(`team_a_score_set1`).value = teamAScore;
+                document.getElementById(`team_b_score_set1`).value = teamBScore;
+            } else if (!set2a && !set2b) {
+                document.getElementById(`team_a_score_set2`).value = teamAScore;
+                document.getElementById(`team_b_score_set2`).value = teamBScore;
+            } else if (!set3a && !set3b) {
+                document.getElementById(`team_a_score_set3`).value = teamAScore;
+                document.getElementById(`team_b_score_set3`).value = teamBScore; 
+                document.querySelector("form").submit();
+            }
+            else {
+                alert("3 Set belum terisi. Pastikan semua set terisi sebelum menyimpan.");
+            }
+            resetScores();
+        }
+
+        function resetScores() {
             document.getElementById("teamAScore").innerText = 0;
             document.getElementById("teamBScore").innerText = 0;
-            document.getElementById("teamASetInput").value = 0;
-            document.getElementById("teamBSetInput").value = 0;
+            document.getElementById("teamAScoreInput").value = 0;
+            document.getElementById("teamBScoreInput").value = 0;
+        }
+        function resetSet(){
             document.getElementById("teamASet").innerText = 0;
             document.getElementById("teamBSet").innerText = 0;
+            document.getElementById("teamASetInput").value = 0;
+            document.getElementById("teamBSetInput").value = 0;
+        }
+        function reset() {
+            resetScores();
+            resetSet();
+            document.getElementById("team_a_score_set1").value = '';
+            document.getElementById("team_a_score_set2").value = '';
+            document.getElementById("team_a_score_set3").value = '';
+            document.getElementById("team_b_score_set1").value = '';
+            document.getElementById("team_b_score_set2").value = '';
+            document.getElementById("team_b_score_set3").value = '';
         }
 
         function kurang(elementId) {
@@ -497,6 +647,76 @@ session_start();
                 document.getElementById(elementId + "Input").value = currentScore - 1;
             }
         }
+
+        function result(){
+            const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
+            const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
+            if (teamAScore > teamBScore) {
+                const setElement = document.getElementById("teamASet");
+                let currentSet = parseInt(setElement.innerText);
+                setElement.innerText = currentSet + 1;
+                document.getElementById("teamASetInput").value = currentSet + 1;
+                saveSetScore(teamAScore, teamBScore);
+            }else if (teamAScore < teamBScore) {
+                const setElement = document.getElementById("teamBSet");
+                let currentSet = parseInt(setElement.innerText);
+                setElement.innerText = currentSet + 1;
+                document.getElementById("teamBSetInput").value = currentSet + 1;
+                saveSetScore(teamAScore, teamBScore);
+            }else{
+                alert("Skor seri, tidak bisa disimpan");
+            }
+        }
+
+        const modal = document.getElementById("scoreModal");
+        const span = document.getElementsByClassName("close")[0];
+
+        function showModal(match) {
+            const modalContent = document.getElementById("modalContent");
+            modalContent.innerHTML = `
+                <table>
+                    <tr>
+                        <th class="r">${match.team_a_name}</th>
+                        <td>-</td>
+                        <th class="l">${match.team_b_name}</th>
+                    </tr>
+                    <tr>
+                        <td class="r">${match.team_a_score_set1}</td>
+                        <td>-</td>
+                        <td class="l">${match.team_b_score_set1}</td>
+                    </tr>
+                    <tr>
+                        <td class="r">${match.team_a_score_set2}</td>
+                        <td>-</td>
+                        <td class="l">${match.team_b_score_set2}</td>
+                    </tr>
+                    <tr>
+                        <td class="r">${match.team_a_score_set3}</td>
+                        <td>-</td>
+                        <td class="l">${match.team_b_score_set3}</td>
+                    </tr>
+                </table>
+            `;
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.querySelectorAll(".history tr").forEach(row => {
+            row.addEventListener("click", () => {
+                const matchIndex = row.getAttribute("data-index");
+                const match = <?php echo json_encode($_SESSION['match_history_badminton']); ?>[matchIndex];
+                showModal(match);
+            });
+        });
     </script>
 </body>
 </html>
