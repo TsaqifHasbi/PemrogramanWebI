@@ -242,15 +242,17 @@ session_start();
             color: #000;
             font-size: 1.6em;
             font-weight: bold;
-            text-align: center;
         }
         .setboard .team-set input{
+            border: none;
             border-radius: 5px;
             margin-bottom: 8px;
             text-align: center;
+            padding-left: 10px;
         }
         .setboard .team-set label{
             font-size: 0.5em;
+            text-align: center;
         }
         .setboard .team-set .result-box{
             display: flex;
@@ -516,11 +518,11 @@ session_start();
                     <span class="result">Result</span>
                 </div>
                 <label for="team_a_score_set1">set 1</label>
-                <input type="number" id="team_a_score_set1" name="team_a_score_set1" placeholder="Set 1" required readonly>
+                <input type="number" id="team_a_score_set1" name="team_a_score_set1" required readonly>
                 <label for="team_a_score_set2">set 2</label>
-                <input type="number" id="team_a_score_set2" name="team_a_score_set2" placeholder="Set 2" required readonly>
+                <input type="number" id="team_a_score_set2" name="team_a_score_set2" required readonly>
                 <label for="team_a_score_set3">set 3</label>
-                <input type="number" id="team_a_score_set3" name="team_a_score_set3" placeholder="Set 3" required readonly>
+                <input type="number" id="team_a_score_set3" name="team_a_score_set3" required readonly>
             </div>
             <!-- Blue Team -->
             <div class="team-set blue">
@@ -528,11 +530,11 @@ session_start();
                     <span class="result">Result</span>
                 </div>
                 <label for="team_b_score_set1">set 1</label>
-                <input type="number" id="team_b_score_set1" name="team_b_score_set1" placeholder="Set 1" required readonly>
+                <input type="number" id="team_b_score_set1" name="team_b_score_set1" required readonly>
                 <label for="team_b_score_set2">set 2</label>
-                <input type="number" id="team_b_score_set2" name="team_b_score_set2" placeholder="Set 2" required readonly>
+                <input type="number" id="team_b_score_set2" name="team_b_score_set2" required readonly>
                 <label for="team_b_score_set3">set 3</label>
-                <input type="number" id="team_b_score_set3" name="team_b_score_set3" placeholder="Set 3" required readonly>
+                <input type="number" id="team_b_score_set3" name="team_b_score_set3" required readonly>
             </div>
         </div>
         <div class="resub">
@@ -576,19 +578,26 @@ session_start();
             const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
 
             if (teamAScore >= 21 && teamAScore >= teamBScore + 2) {
-                const setElement = document.getElementById("teamASet");
-                let currentSet = parseInt(setElement.innerText);
-                setElement.innerText = currentSet + 1;
-                document.getElementById("teamASetInput").value = currentSet + 1;
+                tambahSetA();
                 saveSetScore(teamAScore, teamBScore);
-                
             }else if (teamBScore >= 21 && teamBScore >= teamAScore + 2) {
-                const setElement = document.getElementById("teamBSet");
-                let currentSet = parseInt(setElement.innerText);
-                setElement.innerText = currentSet + 1;
-                document.getElementById("teamBSetInput").value = currentSet + 1;
+                tambahSetB();
                 saveSetScore(teamAScore, teamBScore);
             }
+        }
+        
+        function tambahSetA(){
+            const setElement = document.getElementById("teamASet");
+            let currentSet = parseInt(setElement.innerText);
+            setElement.innerText = currentSet + 1;
+            document.getElementById("teamASetInput").value = currentSet + 1;
+        }
+
+        function tambahSetB(){
+            const setElement = document.getElementById("teamBSet");
+            let currentSet = parseInt(setElement.innerText);
+            setElement.innerText = currentSet + 1;
+            document.getElementById("teamBSetInput").value = currentSet + 1;
         }
 
         function saveSetScore(teamAScore, teamBScore) {
@@ -611,7 +620,7 @@ session_start();
                 document.querySelector("form").submit();
             }
             else {
-                alert("3 Set belum terisi. Pastikan semua set terisi sebelum menyimpan.");
+                alert("Belum semua set terisi. Pastikan semua set terisi sebelum menyimpan.");
             }
             resetScores();
         }
@@ -652,16 +661,10 @@ session_start();
             const teamAScore = parseInt(document.getElementById("teamAScore").innerText);
             const teamBScore = parseInt(document.getElementById("teamBScore").innerText);
             if (teamAScore > teamBScore) {
-                const setElement = document.getElementById("teamASet");
-                let currentSet = parseInt(setElement.innerText);
-                setElement.innerText = currentSet + 1;
-                document.getElementById("teamASetInput").value = currentSet + 1;
+                tambahSetA();
                 saveSetScore(teamAScore, teamBScore);
             }else if (teamAScore < teamBScore) {
-                const setElement = document.getElementById("teamBSet");
-                let currentSet = parseInt(setElement.innerText);
-                setElement.innerText = currentSet + 1;
-                document.getElementById("teamBSetInput").value = currentSet + 1;
+                tambahSetB();
                 saveSetScore(teamAScore, teamBScore);
             }else{
                 alert("Skor seri, tidak bisa disimpan");
@@ -669,7 +672,7 @@ session_start();
         }
 
         const modal = document.getElementById("scoreModal");
-        const span = document.getElementsByClassName("close")[0];
+        const close = document.getElementsByClassName("close")[0];
 
         function showModal(match) {
             const modalContent = document.getElementById("modalContent");
@@ -700,7 +703,7 @@ session_start();
             modal.style.display = "block";
         }
 
-        span.onclick = function() {
+        close.onclick = function() {
             modal.style.display = "none";
         }
 
@@ -709,14 +712,14 @@ session_start();
                 modal.style.display = "none";
             }
         }
-
+    </script>
+    <script>
         document.querySelectorAll(".history tr").forEach(row => {
             row.addEventListener("click", () => {
                 const matchIndex = row.getAttribute("data-index");
                 const match = <?php echo json_encode($_SESSION['match_history_badminton']); ?>[matchIndex];
                 showModal(match);
             });
-        });
-    </script>
+        });</script>
 </body>
 </html>

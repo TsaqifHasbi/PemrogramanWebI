@@ -30,10 +30,6 @@ $match = [
     'match_date' => date('Y-m-d H:i:s')
 ];
 
-if (!isset($_SESSION['match_history_badminton'])) {
-    $_SESSION['match_history_badminton'] = [];
-}
-
 $_SESSION['match_history_badminton'][] = $match;
 
 header('Location: score-badminton.php');
