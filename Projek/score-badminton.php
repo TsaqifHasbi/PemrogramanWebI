@@ -10,7 +10,7 @@ session_start();
     <link rel="shortcut icon" href="Gambar/logo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel='stylesheet'>
-
+    <link rel="stylesheet" href="Navbar/scoreBoard-Navbar.css">
     <style>
         * {
             margin: 0;
@@ -27,7 +27,7 @@ session_start();
             align-items: center;
             user-select: none;
         }
-        .navbar {
+        /* .navbar {
             background-color: #4F4A45;
             width: 100%;
             padding: 20px 0;
@@ -48,6 +48,9 @@ session_start();
         }
         .navbar .logo img {
             width: 35px;
+        } */
+        .navbar a:nth-child(3){
+            color: #ED7D31;
         }
         h1 {
             margin-top: 56px;
@@ -458,7 +461,7 @@ session_start();
     </style>
 </head>
 <body>
-    <div class="navbar">
+    <!-- <div class="navbar">
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
@@ -466,7 +469,8 @@ session_start();
         <a href="score-badminton.php" style="color: #ED7D31;">Badminton</a>
         <a href="score-voli.php">Voli</a>
         <a href="score-basket.php">Basket</a>
-    </div>
+    </div> -->
+    <?php include 'Navbar/scoreBoard-Navbar.php'; ?>
     <h1>Badminton Match</h1>
     <div class="scoreboard">
         <form action="savematch-history-badminton.php" method="post">

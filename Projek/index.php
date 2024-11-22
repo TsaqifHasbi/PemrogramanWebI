@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScoreHub</title>
     <link rel="shotcut icon" href="Gambar/logo.png">
+    <link rel="stylesheet" href="Navbar/landingPage-Navbar.css">
     <style>
         * {
             margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
         }
         body::-webkit-scrollbar {
@@ -23,7 +25,7 @@
             -ms-overflow-style: none;
             scrollbar-width: none;*/
         }
-        .navbar {
+        /* .navbar {
             background-color: #4F4A45;
             width: 100%;
             padding: 20px 0;
@@ -44,7 +46,7 @@
         }
         .navbar .logo img{
             width: 35px;
-        }
+        } */
         .container {
             display: flex;
             flex-direction: column;
@@ -135,7 +137,7 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
+    <!-- <div class="navbar">
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
@@ -143,7 +145,8 @@
         <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php">Voli</a>
         <a href="score-basket.php">Basket</a>
-    </div>
+    </div> -->
+    <?php include 'Navbar/landingPage-Navbar.php'; ?>
     <div class="container">
         <div class="logo-container">
             <h1 class="title">ScoreHub</h1>

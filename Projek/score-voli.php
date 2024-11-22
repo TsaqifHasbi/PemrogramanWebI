@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScoreHub - Voli</title>
     <link rel="shotcut icon" href="Gambar/logo.png">
+    <link rel="stylesheet" href="Navbar/scoreBoard-Navbar.css">
     <style>
         * {
             margin: 0;
@@ -24,7 +25,7 @@
             -ms-overflow-style: none;
             scrollbar-width: none;*/
         }
-        .navbar {
+        /* .navbar {
             background-color: #4F4A45;
             width: 100%;
             padding: 20px 0;
@@ -45,6 +46,9 @@
         }
         .navbar .logo img{
             width: 35px;
+        } */
+        .navbar a:nth-child(4){
+            color: #ED7D31;
         }
         h1{
             margin-top: 56px;
@@ -231,7 +235,7 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
+    <!-- <div class="navbar">
         <div class="logo">
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
@@ -239,7 +243,9 @@
         <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php" style="color: #ED7D31;">Voli</a>
         <a href="score-basket.php">Basket</a>
-    </div>
+    </div> -->
+    <?php include 'Navbar/scoreBoard-Navbar.php'; ?>
+
     <h1>Volley Ball Match</h1>
     <div class="scoreboard">
         <!--Red-->

@@ -1,0 +1,98 @@
+/* li, a, button{
+    font-family: "montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #4F4A45;
+}
+
+.logo{
+    width: 35px;
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.nav_links{
+    list-style: none;
+}
+
+.nav_links li{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.nav_links li a{
+    transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover{
+    color: rgb(166, 144, 118);
+}
+
+button .nav{
+    margin-left: 30px;
+    padding: 9px 25px;
+    background-color: rgb(166, 144, 118);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button .nav:hover{
+    background-color: rgb(111, 97, 81);
+} */
+
+.navbar {
+    background-color: #4F4A45;
+    padding: 24px 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.navbar .logo {
+    width: 35px;
+    cursor: pointer;
+    margin-right: auto;
+    margin-left: 10%;
+}
+.navbar .nav{
+    margin-right: 10%;
+    margin-left: auto;
+}
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 30px;
+}
+.navbar a:hover{
+    color: #ED7D31;
+    text-decoration: none;
+    font-weight: bold;
+}
+.navbar .logo img{
+    width: 35px;
+}
+.btn-cta{
+    padding: 9px 25px;
+    background-color: #ED7D31;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    font-weight: bold;
+    color: #fff;
+}
+.btn-cta:hover{
+    background-color: rgb(166, 144, 118);
+}
