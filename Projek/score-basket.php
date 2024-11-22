@@ -339,6 +339,9 @@
     let timerInterval = null;
     let shotime = 24;
     let shotimeInterval = null;
+    const initialMenit = menit;
+    const initialDetik = detik;
+    const initialShotime = shotime;
     const timerElement = document.querySelector(".timer");
     const shotimeElement = document.querySelector("#shotime");
     const shotimeContainer = document.querySelector(".shotime-container");
@@ -358,17 +361,14 @@
     function toggleTimer() {
         if (timerInterval) {
             clearInterval(timerInterval);
-            clearInterval(shotimeInterval);
             timerInterval = null;
-            shotimeInterval = null;
         } else {
             timerInterval = setInterval(() => {
                 if (menit === 0 && detik === 0) {
                     clearInterval(timerInterval);
                     clearInterval(shotimeInterval);
                     alert("Waktu habis!");
-                    timerInterval = null;
-                    shotimeInterval = null;
+                    resetTimer();
                     return;
                 }
                 if (detik === 0) {
@@ -380,26 +380,33 @@
                 updateTimerDisplay();
             }, 1000);
 
-            shotimeInterval = setInterval(() => {
-                if (shotime === 0) {
-                    shotime = 24; // Reset shotime jika mencapai 0
-                } else {
-                    shotime--;
-                }
-                updateShotimeDisplay();
-            }, 1000);
+            // Memulai shotime jika belum berjalan
+            if (!shotimeInterval) {
+                startShotime();
+            }
         }
     }
 
-    shotimeContainer.addEventListener("click", (event) => {
-        if (event.target === shotimeContainer) {
-            shotime = 24;
+    function startShotime() {
+        shotimeInterval = setInterval(() => {
+            if (shotime === 0) {
+                shotime = initialShotime;
+                updateShotimeDisplay();
+                return;
+            }
+            shotime--;
             updateShotimeDisplay();
+        }, 1000);
+    }
+
+    // Klik pada shotime untuk pause/resume
+    shotimeContainer.addEventListener("click", () => {
+        if (shotimeInterval) {
+            clearInterval(shotimeInterval);
+            shotimeInterval = null;
+        } else {
+            startShotime();
         }
-    });
-    shotimeCont.addEventListener("click", () => {
-        shotime = 24;
-        updateShotimeDisplay();
     });
 
 
@@ -455,6 +462,17 @@
         const inputElement = document.getElementById(inputId);
         const displayElement = document.getElementById(displayId);
         displayElement.innerText = inputElement.value;
+    }
+    function resetTimer() {
+        clearInterval(timerInterval);
+        clearInterval(shotimeInterval);
+        timerInterval = null;
+        shotimeInterval = null;
+        menit = initialMenit;
+        detik = initialDetik;
+        shotime = initialShotime;
+        updateTimerDisplay();
+        updateShotimeDisplay();
     }
 </script>
 </body>

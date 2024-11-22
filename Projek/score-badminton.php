@@ -586,6 +586,16 @@ session_start();
             }
         }
         
+        function cekdeuce(){
+            const teamASet = parseInt(document.getElementById("teamASet").innerText);
+            const teamBSet = parseInt(document.getElementById("teamBSet").innerText);
+            if (teamASet >= 2 || teamBSet >= 2) {
+                document.getElementById(`team_a_score_set3`).value = null;
+                document.getElementById(`team_b_score_set3`).value = null; 
+                document.querySelector("form").submit();
+            }
+        }
+
         function tambahSetA(){
             const setElement = document.getElementById("teamASet");
             let currentSet = parseInt(setElement.innerText);
@@ -614,6 +624,7 @@ session_start();
             } else if (!set2a && !set2b) {
                 document.getElementById(`team_a_score_set2`).value = teamAScore;
                 document.getElementById(`team_b_score_set2`).value = teamBScore;
+                cekdeuce();
             } else if (!set3a && !set3b) {
                 document.getElementById(`team_a_score_set3`).value = teamAScore;
                 document.getElementById(`team_b_score_set3`).value = teamBScore; 
