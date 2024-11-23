@@ -23,15 +23,39 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            user-select: none;
             /*overflow-y: scroll;
             -ms-overflow-style: none;
             scrollbar-width: none;*/
         }
         .container{
             display: flex;
-            margin: 40px 0;
-            justify-content: space-between;
+            flex-direction: column;
+            margin: 50px 0;
             gap: 98px;
+        }
+        .role{
+            font-size: 2rem;
+            color: #333;
+            margin: 0;
+            padding: 20px 0;
+            font-weight: 600;
+            text-transform: capitalize;
+            position: relative;
+        }
+        .data{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-left: 10px solid #4F4A45;
+            border-right: 10px solid #4F4A45;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            padding: 50px 130px;
+            margin: 20px 0;
+        }
+        .data h3{
+            margin-top: 10px;
         }
         .data img {
             width: 200px;
@@ -39,24 +63,34 @@
             height: 200px;
             border-radius: 10px;
             display: block;
+            margin-top: 15px;
             margin-left: auto;
             margin-right: auto;
         }
-        .data h2 {
-            margin-top: 15px;
+        .data .nama-gelar{
+            opacity: 0.6;
+        }
+        .data .quote-container {
+            background: linear-gradient(135deg, #ffffff, #e8e8e8);
+            border-left: 5px solid #3498db;
+            padding: 20px 30px;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 40px auto;
         }
         .data p {
             margin-top: 15px;
             text-align: center;
             font-size: 16px;
         }
-        .data {
-            padding-top: 140px;
+        .data i:hover{
+            transform: scale(1.4);
         }
         .data .sm {
             display: flex;
             justify-content: center;
-            margin: 20px 0px;
+            margin: 20px 0 0 0;
             gap: 20px;
         }
         .data .sm a {
@@ -64,36 +98,67 @@
             width: 56px;
             font-size: 40px;
         }
-        .data .sm .ig a {
+        .data .sm .ig a i{
             color: black;
             transition: 0.3s linear;
         }
-        .data .sm .ig a:hover {
+        .data .sm .ig a i:hover {
             background: linear-gradient(to top right, yellow, orange, red, purple, blue);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            transform: scale(1.4);
         }
-        .data .sm .tw a {
+        .data .sm .tw a i{
             color: black;
             transition: 0.3s linear;
         }
-        .data .sm .tw a:hover {
+        .data .sm .tw a i:hover {
             color: rgb(62, 154, 190);
             -webkit-background-clip: text;
             background-clip: text;
-            transform: scale(1.4);
         }
-        .data .sm .sptfy a {
+        .data .sm .sptfy a i {
+            color: black;
+            background-color: transparent;
+            border-radius: 50%;
+            display: inline-block;
+            transition: color 0.8s ease, transform 0.8s ease;
+        }
+
+        .data .sm .sptfy a i:hover {
+            color: green;
+            background-color: black;
+            transform: scale(1.2);
+            border-radius: 50%;
+        }
+
+
+        .data .sm .git a i{
             color: black;
             transition: 0.3s linear;
         }
-        .data .sm .sptfy a:hover {
-            color: green;
+        .data .sm .dc a i {
+            color: black;
+            transition: 0.3s linear;
+        }
+        .data .sm .dc a i:hover {
+            color: #5865F2;
             -webkit-background-clip: text;
             background-clip: text;
-            transform: scale(1.4);
+        }
+        .data .sm .tik a i {
+            color: black;
+            transition: 0.3s linear;
+        }
+        .data .sm .steam a i {
+            color: black;
+            transition: 0.3s linear;
+        }
+        .data .sm .steam a i:hover {
+            background: linear-gradient(to bottom, #171a21, #1b2838, #2a475e, #4c6f94, #66c0f4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
     </style>
 </head>
@@ -102,9 +167,18 @@
     <div class="container">
         <section id="Tsaqif">
             <div class="Content">
+                <div class="role">
+                    <h1 style="text-align: center;">Our Front End Developer</h1>
+                </div>
                 <div class="data">
-                    <img src="Gambar/TsaqifPP.jpeg" alt="Tsaqif" title=""/>
-                    <h2 style="text-align: center">Tsaqif Hasbi Aghna Syarief</h2>
+                    <h3 style="text-align: center">Tsaqif Hasbi Aghna Syarief</h3>
+                    <img src="Gambar/Tsaqif.jpg" alt="Tsaqif" title=""/>
+                    <div class="nama-gelar">
+                        <p>Tsaqif Hasbi Aghna Syarief S.Kom M.T</p>
+                    </div>
+                    <div class="quote-container">
+                        <p>"Awas Ada Rubah."</p>
+                    </div>
                     <p>Follow My Social Media</p>
                     <div class="sm">
                         <div class="ig">
@@ -115,6 +189,20 @@
                         </div>
                         <div class="sptfy">
                             <a href="https://open.spotify.com/user/21c2iygultzcmsl6lisvlu7tq?si=fyURqvnZTxWf1PttYhtcgQ&utm_source=copy-link"><i class="bx bxl-spotify"></i></a>
+                        </div>
+                        <div class="git">
+                            <a href="https://github.com/TsaqifHasbi"><i class="bx bxl-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="sm">
+                        <div class="dc">
+                            <a href=""><i class='bx bxl-discord-alt'></i></a>
+                        </div>
+                        <div class="tik">
+                            <a href=""><i class='bx bxl-tiktok'></i></i></a>
+                        </div>
+                        <div class="steam">
+                            <a href=""><i class='bx bxl-steam'></i></a>
                         </div>
                     </div>
                 </div>
@@ -122,19 +210,42 @@
         </section>
         <section id="Andhika">
             <div class="Content">
+                <div class="role">
+                    <h1 style="text-align: center;">Our UI/UX Designer</h1>
+                </div>
                 <div class="data">
-                    <img src="Gambar/AndhikaPP.jpg" alt="Andhika" title=""/>
-                    <h2 style="text-align: center">Andhika Putra Restu Ilahi</h2>
+                    <h3 style="text-align: center">Andhika Putra Restu Ilahi</h3>
+                    <img src="Gambar/Andhika.jpg" alt="Andhika" title=""/>
+                    <div class="nama-gelar">
+                        <p>Andhika Putra Restu Ilahi S.Kom M.Kom</p>
+                    </div>
+                    <div class="quote-container">
+                        <p>"Jalan-jalan ke arah pantai, ngapain?"</p>
+                    </div>
                     <p>Follow My Social Media</p>
                     <div class="sm">
                         <div class="ig">
-                            <a href="https://www.instagram.com/tsaqif_hasbi/"><i class="bx bxl-instagram"></i></a>
+                            <a href=""><i class="bx bxl-instagram"></i></a>
                         </div>
                         <div class="tw">
-                            <a href="https://twitter.com/TsaqifHasbi17?t=jot9H78I46MgPBj14Xk12w&s=08"><i class="bx bxl-twitter"></i></a>
+                            <a href=""><i class="bx bxl-twitter"></i></a>
                         </div>
                         <div class="sptfy">
-                            <a href="https://open.spotify.com/user/21c2iygultzcmsl6lisvlu7tq?si=fyURqvnZTxWf1PttYhtcgQ&utm_source=copy-link"><i class="bx bxl-spotify"></i></a>
+                            <a href=""><i class="bx bxl-spotify"></i></a>
+                        </div>
+                        <div class="git">
+                            <a href=""><i class="bx bxl-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="sm">
+                        <div class="dc">
+                            <a href=""><i class='bx bxl-discord-alt'></i></a>
+                        </div>
+                        <div class="tik">
+                            <a href=""><i class='bx bxl-tiktok'></i></i></a>
+                        </div>
+                        <div class="steam">
+                            <a href=""><i class='bx bxl-steam'></i></a>
                         </div>
                     </div>
                 </div>
@@ -142,19 +253,42 @@
         </section>
         <section id="Paundra">
             <div class="Content">
+                <div class="role">
+                    <h1 style="text-align: center;">Our Back End Developer</h1>
+                </div>
                 <div class="data">
-                    <img src="Gambar/PaundraPP.jpg" alt="Paundra" title=""/>
-                    <h2 style="text-align: center">Daiva Paundra Gevano</h2>
+                    <h3 style="text-align: center">Daiva Paundra Gevano</h3>
+                    <img src="Gambar/Paundra.jpg" alt="Paundra" title=""/>
+                    <div class="nama-gelar">
+                        <p>Daiva Paundra Gevano S.Kom M.Kom</p>
+                    </div>
+                    <div class="quote-container">
+                        <p>"Jangan pernah menyerah pada mimpi-mimpimu, karena mimpimu adalah kunci menuju kebahagiaan."</p>
+                    </div>
                     <p>Follow My Social Media</p>
                     <div class="sm">
                         <div class="ig">
-                            <a href="https://www.instagram.com/tsaqif_hasbi/"><i class="bx bxl-instagram"></i></a>
+                            <a href=""><i class="bx bxl-instagram"></i></a>
                         </div>
                         <div class="tw">
-                            <a href="https://twitter.com/TsaqifHasbi17?t=jot9H78I46MgPBj14Xk12w&s=08"><i class="bx bxl-twitter"></i></a>
+                            <a href=""><i class="bx bxl-twitter"></i></a>
                         </div>
                         <div class="sptfy">
-                            <a href="https://open.spotify.com/user/21c2iygultzcmsl6lisvlu7tq?si=fyURqvnZTxWf1PttYhtcgQ&utm_source=copy-link"><i class="bx bxl-spotify"></i></a>
+                            <a href=""><i class="bx bxl-spotify"></i></a>
+                        </div>
+                        <div class="git">
+                            <a href=""><i class="bx bxl-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="sm">
+                        <div class="dc">
+                            <a href=""><i class='bx bxl-discord-alt'></i></a>
+                        </div>
+                        <div class="tik">
+                            <a href=""><i class='bx bxl-tiktok'></i></i></a>
+                        </div>
+                        <div class="steam">
+                            <a href=""><i class='bx bxl-steam'></i></a>
                         </div>
                     </div>
                 </div>

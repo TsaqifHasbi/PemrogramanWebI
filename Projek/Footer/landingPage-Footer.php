@@ -14,12 +14,14 @@
                 <a href=""><i class="bx bxl-instagram"></i>
                 <a href=""><i class='bx bxl-github'></i></i></a>
             </div>
-            <h3><a href="">About Us</a></h3>
-            <div class="us">
-                <div class="foto">
-                    <a href=""><img src="Gambar/TsaqifPP.jpeg" alt="Tsaqif"></a>
-                    <a href=""><img src="Gambar/AndhikaPP.jpg" alt="Andhika"></a>
-                    <a href=""><img src="Gambar/PaundraPP.jpg" alt="Paundra"></a>
+            <div class="About-us">
+                <h3><a href="">About Us</a></h3>
+                <div class="us">
+                    <div class="foto">
+                        <a href="About.php#Tsaqif"><img src="Gambar/Tsaqif.jpg" alt="Tsaqif"></a>
+                        <a href="About.php#Andhika"><img src="Gambar/Andhika.jpg" alt="Andhika"></a>
+                        <a href="About.php#Paundra"><img src="Gambar/Paundra.jpg" alt="Paundra"></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,6 +30,14 @@
             <div class="flexy">
                 <p>scorehub@scoreboard.com</p>
                 <i class='bx bxs-envelope' style='color:#ffffff' ></i>
+            </div>
+            <div class="flexy">
+                <p>@scorehub</p>
+                <i class='bx bxl-twitter' style='color:#ffffff' ></i>
+            </div>
+            <div class="flexy">
+                <p>@scorehub</p>
+                <i class='bx bxl-instagram' style='color:#ffffff' ></i>
             </div>
             <div class="flexy">
                 <p>+62 812-8119-1551 </p>

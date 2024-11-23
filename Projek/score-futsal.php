@@ -11,6 +11,7 @@ session_start();
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel='stylesheet'>
     <link rel="stylesheet" href="Navbar/scoreBoard-Navbar.css">
+    <link rel="stylesheet" href="Footer/scoreBoard-Footer.css">
     <style>
         * {
             margin: 0;
@@ -283,7 +284,7 @@ session_start();
             color: #ffffff;
             margin: 10px 0;
         }
-        footer {
+        /* footer {
             background-color: #4F4A45;
             color: #fff;
             padding: 32px 0;
@@ -291,7 +292,7 @@ session_start();
             width: 100%;
             position: relative;
             bottom: 0;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -355,9 +356,7 @@ session_start();
         }
         ?>
     </div>
-    <footer>
-        © 2024 ScoreHub. All rights reserved.
-    </footer>
+    <?php include 'Footer/scoreBoard-Footer.php'; ?>
     <script>
         let menit = 10;
         let detik = 0;
