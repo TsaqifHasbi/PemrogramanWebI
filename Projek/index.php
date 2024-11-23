@@ -6,6 +6,8 @@
     <title>ScoreHub</title>
     <link rel="shotcut icon" href="Gambar/logo.png">
     <link rel="stylesheet" href="Navbar/landingPage-Navbar.css">
+    <link rel="stylesheet" href="Footer/landingPage-Footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         * {
             margin: 0;
@@ -126,14 +128,14 @@
         .ajakan p{
             margin-top: 15px;
         }
-        footer {
+        /* footer {
             background-color: #4F4A45;
             color: #fff;
             padding: 32px 0;
             text-align: center;
             width: 100%;
             bottom: 0;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -182,8 +184,6 @@
             <option value="Basket">Futsal</option>
         </select>
     </div>
-    <footer>
-        © 2024 ScoreHub. All rights reserved.
-    </footer>
+    <?php include 'Footer/landingPage-Footer.php'; ?>
 </body>
 </html>

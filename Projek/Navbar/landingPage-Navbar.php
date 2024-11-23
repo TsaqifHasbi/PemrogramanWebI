@@ -21,6 +21,6 @@
         <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php">Voli</a>
         <a href="score-basket.php">Basket</a>
-        <a class="cta" href="../About.php"><button class="btn-cta">About</button></a>
+        <a class="cta" href="About.php"><button class="btn-cta">About</button></a>
     </div>
 </div>
