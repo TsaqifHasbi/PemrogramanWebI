@@ -11,6 +11,7 @@ session_start();
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel='stylesheet'>
     <link rel="stylesheet" href="Navbar/scoreBoard-Navbar.css">
+    <link rel="stylesheet" href="Footer/scoreBoard-Footer.css">
     <style>
         * {
             margin: 0;
@@ -568,9 +569,7 @@ session_start();
         }
         ?>
     </div>
-    <footer>
-        © 2024 ScoreHub. All rights reserved.
-    </footer>
+    <?php include 'Footer/scoreBoard-Footer.php'; ?>
     <script>
         function tambah(elementId) {
             const scoreElement = document.getElementById(elementId);

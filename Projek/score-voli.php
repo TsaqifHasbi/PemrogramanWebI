@@ -6,7 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScoreHub - Badminton</title>
+    <title>ScoreHub - Vollyball</title>
     <link rel="shortcut icon" href="Gambar/logo.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/css/boxicons.min.css" rel='stylesheet'>
@@ -49,7 +49,7 @@ session_start();
         .navbar .logo img {
             width: 35px;
         } */
-        .navbar a:nth-child(3){
+        .navbar a:nth-child(4){
             color: #ED7D31;
         }
         h1 {
@@ -466,14 +466,14 @@ session_start();
             <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
         </div>
         <a href="score-futsal.php">Futsal</a>
-        <a href="score-badminton.php" style="color: #ED7D31;">Badminton</a>
+        <a href="score-badminton.php">Badminton</a>
         <a href="score-voli.php">Voli</a>
         <a href="score-basket.php">Basket</a>
     </div> -->
     <?php include 'Navbar/scoreBoard-Navbar.php'; ?>
     <h1>Volleyball Match</h1>
     <div class="scoreboard">
-        <form action="savematch-history-badminton.php" method="post">
+        <form action="savematch-history-voli.php" method="post">
             <!--Red-->
             <div class="team-score">
                 <input type="text" id="teamAName" name="team_a_name" maxlength="20" value="Home" class="team-name red">
@@ -557,9 +557,9 @@ session_start();
     <div class="history">
         <h2>History Pertandingan</h2>
         <?php
-        if (isset($_SESSION['match_history_badminton']) && count($_SESSION['match_history_badminton']) > 0) {
+        if (isset($_SESSION['match_history_voli']) && count($_SESSION['match_history_voli']) > 0) {
             echo "<table>";
-            foreach ($_SESSION['match_history_badminton'] as $index => $match) {
+            foreach ($_SESSION['match_history_voli'] as $index => $match) {
                 echo "<tr data-index='$index'><td class='history-team red'>" .$match['team_a_name']. "</td><td class='history-score red'>" .$match['team_a_set']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_set']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
             }
             echo "</table>";
@@ -568,9 +568,7 @@ session_start();
         }
         ?>
     </div>
-    <footer>
-        © 2024 ScoreHub. All rights reserved.
-    </footer>
+    <?php include 'Footer/scoreBoard-Footer.php'; ?>
     <script>
         function tambah(elementId) {
             const scoreElement = document.getElementById(elementId);
@@ -732,7 +730,7 @@ session_start();
         document.querySelectorAll(".history tr").forEach(row => {
             row.addEventListener("click", () => {
                 const matchIndex = row.getAttribute("data-index");
-                const match = <?php echo json_encode($_SESSION['match_history_badminton']); ?>[matchIndex];
+                const match = <?php echo json_encode($_SESSION['match_history_voli']); ?>[matchIndex];
                 showModal(match);
             });
         });</script>

@@ -358,8 +358,8 @@ session_start();
     </div>
     <?php include 'Footer/scoreBoard-Footer.php'; ?>
     <script>
-        let menit = 10;
-        let detik = 0;
+        let menit = 0;
+        let detik = 5;
         let timerInterval = null;
         const startPauseButton = document.querySelector(".start-pause");
         const resetButton = document.querySelector(".reset");
@@ -382,7 +382,6 @@ session_start();
                 timerInterval = setInterval(() => {
                     if (menit === 0 && detik === 0) {
                         clearInterval(timerInterval);
-                        alert("Waktu habis!");
                         timerInterval = null;
                         startPauseButton.innerHTML = "<i class='bx bxs-right-arrow'></i>";
                         document.querySelector("form").submit();

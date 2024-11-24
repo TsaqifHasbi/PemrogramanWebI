@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,8 @@
     <title>ScoreHub - Basket</title>
     <link rel="shotcut icon" href="Gambar/logo.png">
     <link rel="stylesheet" href="Navbar/scoreBoard-Navbar.css">
+    <link rel="stylesheet" href="Footer/scoreBoard-Footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <style>
         * {
             margin: 0;
@@ -53,7 +58,7 @@
         h1{
             margin-top: 48px;
         }
-        .scoreboard {
+        form {
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -271,7 +276,104 @@
             font-weight: bold;
             color: #333;
         }
-        footer {
+        .start-reset {
+            display: flex;
+            font-size: 0.8em;
+            margin: 30px 0;
+            font-weight: bold;
+            gap: 30px;
+            color: #333;
+        }
+        .start-pause {
+            cursor: pointer;
+        }
+        .reset {
+            cursor: pointer;
+        }
+        .save{
+            border: none;
+            outline: none;
+            background:  none;
+            color: #000; 
+            cursor: pointer; 
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vertical-line {
+            width: 3px;
+            height: 30px;
+            background-color: #333;
+            margin: 0 auto;
+        }
+        .history{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .history h2 {
+            margin: 48px 0 24px 0;
+        }
+        table {
+            border-collapse: collapse;
+            display: flex;
+            margin: 0 0 40px 0;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: none;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .history-team.red{
+            color: #FF453A;
+            text-align: right;
+            width: 15em;
+            padding-right: 20px;
+        }
+        .history-team.blue{
+            color: #3FA3FF;
+            text-align: left;
+            width: 15em;
+            padding-left: 20px;
+        }
+        .history-score{
+            text-align: center;
+        }
+        .tengah{ 
+            text-align: center;
+        }
+        .small{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        tr, td{
+            border: none;
+        }
+        tr:nth-child(odd) td{
+            padding-top: 16px;
+        }
+        tr:nth-child(even) td{
+            padding-bottom: 16px;
+        }
+        tr:nth-of-type(4n-3),
+        tr:nth-of-type(4n-2) {
+            background-color: #4F4A45; /* gelap */
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        tr:nth-of-type(4n-1),
+        tr:nth-of-type(4n) {
+            background-color: #B5AA9E; /* terang */
+            color: #ffffff;
+            margin: 10px 0;
+        }
+        /* footer {
             background-color: #4F4A45;
             color: #fff;
             padding: 32px 0;
@@ -279,7 +381,7 @@
             width: 100%;
             bottom: 0;
             position: relative;
-        }
+        } */
     </style>
 </head>
 <body>
@@ -293,192 +395,230 @@
         <a href="score-basket.php" style="color: #ED7D31;">Basket</a>
     </div> -->
     <?php include 'Navbar/scoreBoard-Navbar.php'; ?>
+    <h1>Basketball Match</h1>
     <div class="scoreboard">
-        <div class="timer" onclick="timer()">
-            <span class="menit">10</span><span> : </span><span class="detik">00</span>
-        </div>
-        <div class="score">
-            <!--Red-->
-            <div class="team-score">
-            <input type="text" id="teamAName" maxlength="20" value="Home" class="team-name red" oninput="updateTeamName('teamAName', 'teamANameDisplay')">
-                <div class="score-container" onclick="tambah('teamAScore')">
-                    <span id="teamAScore" class="numscore">0</span>
+        <form action="savematch-history-basket.php" method="POST">
+            <div class="timer" onclick="toggleTimer()">
+                <span class="menit">10</span><span> : </span><span class="detik">00</span>
+            </div>
+            <div class="score">
+                <!--Red-->
+                <div class="team-score">
+                <input type="text" id="teamAName" name="team_a_name" maxlength="20" value="Home" class="team-name red" oninput="updateTeamName('teamAName', 'teamANameDisplay')">
+                    <div class="score-container" onclick="tambah('teamAScore')">
+                        <span id="teamAScore" class="numscore">0</span>
+                        <input type="hidden" id="teamAScoreInput" name="team_a_score" value="0">
+                    </div>
+                    <div class="option red">
+                        <span class="min" onclick="kurang('teamAScore')">-1</span>
+                        <span class="plus2" onclick="tambah2('teamAScore')">+2</span>
+                        <span class="plus3" onclick="tambah3('teamAScore')">+3</span>
+                    </div>
                 </div>
-                <div class="option red">
-                    <span class="min" onclick="kurang('teamAScore')">-1</span>
-                    <span class="plus2" onclick="tambah2('teamAScore')">+2</span>
-                    <span class="plus3" onclick="tambah3('teamAScore')">+3</span>
+                <span>vs</span>
+                <!--Blue-->
+                <div class="team-score">
+                <input type="text" id="teamBName" name="team_b_name" maxlength="20" value="Away" class="team-name blue" oninput="updateTeamName('teamBName', 'teamBNameDisplay')">
+                    <div class="score-container" onclick="tambah('teamBScore')">
+                        <span id="teamBScore" class="numscore">0</span>
+                        <input type="hidden" id="teamBScoreInput" name="team_b_score" value="0">
+                    </div>
+                    <div class="option blue">
+                        <span class="min" onclick="kurang('teamBScore')">-1</span>
+                        <span class="plus2" onclick="tambah2('teamBScore')">+2</span>
+                        <span class="plus3" onclick="tambah3('teamBScore')">+3</span>
+                    </div>
                 </div>
             </div>
-            <span>vs</span>
-            <!--Blue-->
-            <div class="team-score">
-            <input type="text" id="teamBName" maxlength="20" value="Away" class="team-name blue" oninput="updateTeamName('teamBName', 'teamBNameDisplay')">
-                <div class="score-container" onclick="tambah('teamBScore')">
-                    <span id="teamBScore" class="numscore">0</span>
-                </div>
-                <div class="option blue">
-                    <span class="min" onclick="kurang('teamBScore')">-1</span>
-                    <span class="plus2" onclick="tambah2('teamBScore')">+2</span>
-                    <span class="plus3" onclick="tambah3('teamBScore')">+3</span>
-                </div>
+            <div class="shotime-container">
+                    <div class="container">
+                        <span id="shotime" class="shotime">24</span>
+                    </div>
+                    <div class="shotime-manage">
+                        <span class="nol">0</span>
+                        <span class="half">14</span>
+                        <span class="full">24</span>
+                    </div>
             </div>
-        </div>
-        <div class="shotime-container">
-                <div class="container">
-                    <span id="shotime" class="shotime">24</span>
-                </div>
-                <div class="shotime-manage">
-                    <span class="nol">0</span>
-                    <span class="half">14</span>
-                    <span class="full">24</span>
-                </div>
-        </div>
+            <div class="start-reset">
+                <span class="start-pause" onclick="toggleTimer()"><i class='bx bxs-right-arrow'></i></span>
+                <span class="reset"><i class='bx bx-revision'></i></span>
+                <button type="submit" class="save"><i class='bx bx-save'></i></button>
+            </div>
+        </form>
     </div>
-    <footer>
-        © 2024 ScoreHub. All rights reserved.
-    </footer>
-    <script>
-    let menit = 10;
-    let detik = 0;
-    let timerInterval = null;
-    let shotime = 24;
-    let shotimeInterval = null;
-    const initialMenit = menit;
-    const initialDetik = detik;
-    const initialShotime = shotime;
-    const timerElement = document.querySelector(".timer");
-    const shotimeElement = document.querySelector("#shotime");
-    const shotimeContainer = document.querySelector(".shotime-container");
-    const shotimeCont = document.querySelector(".shotime-container .container");
-
-    function updateTimerDisplay() {
-        const menitElement = document.querySelector(".menit");
-        const detikElement = document.querySelector(".detik");
-        menitElement.textContent = menit.toString().padStart(2, "0");
-        detikElement.textContent = detik.toString().padStart(2, "0");
-    }
-
-    function updateShotimeDisplay() {
-        shotimeElement.textContent = shotime.toString().padStart(2, "0");
-    }
-
-    function toggleTimer() {
-        if (timerInterval) {
-            clearInterval(timerInterval);
-            timerInterval = null;
+    <div class="history">
+        <h2>History Pertandingan</h2>
+        <?php
+        if (isset($_SESSION['match_history_basket']) && count($_SESSION['match_history_basket']) > 0) {
+            echo "<table>";
+            foreach ($_SESSION['match_history_basket'] as $match) {
+                echo "<tr><td class='history-team red'>" .$match['team_a_name']. "</td><td class='history-score red'>" .$match['team_a_score']. "</td><td class='tengah small'>-</td><td class='history-score blue'>" .$match['team_b_score']. "</td><td class='history-team blue'>" .$match['team_b_name']. "</td></tr><tr><td class='tengah' colspan='5'>" .$match['match_date']. "</td></tr>";
+            }
+            echo "</table>";
         } else {
-            timerInterval = setInterval(() => {
-                if (menit === 0 && detik === 0) {
-                    clearInterval(timerInterval);
-                    clearInterval(shotimeInterval);
-                    alert("Waktu habis!");
-                    resetTimer();
+            echo "No match history available.";
+        }
+        ?>
+    </div>
+    <?php include 'Footer/scoreBoard-footer.php'; ?>
+    <script>
+        let menit = 10;
+        let detik = 0;
+        let timerInterval = null;
+        let shotime = 24;
+        let shotimeInterval = null;
+        const initialMenit = menit;
+        const initialDetik = detik;
+        const initialShotime = shotime;
+        const timerElement = document.querySelector(".timer");
+        const shotimeElement = document.querySelector("#shotime");
+        const shotimeContainer = document.querySelector(".shotime-container");
+        const shotimeCont = document.querySelector(".shotime-container .container");
+        const startPauseButton = document.querySelector(".start-pause");
+
+        function updateTimerDisplay() {
+            const menitElement = document.querySelector(".menit");
+            const detikElement = document.querySelector(".detik");
+            menitElement.textContent = menit.toString().padStart(2, "0");
+            detikElement.textContent = detik.toString().padStart(2, "0");
+        }
+
+        function updateShotimeDisplay() {
+            shotimeElement.textContent = shotime.toString().padStart(2, "0");
+        }
+
+        function toggleTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+                clearInterval(shotimeInterval);
+                shotimeInterval = null;
+                startPauseButton.innerHTML = "<i class='bx bxs-right-arrow'></i>";
+            } else {
+                startPauseButton.innerHTML = "<i class='bx bx-pause-circle'></i>";
+                timerInterval = setInterval(() => {
+                    if (menit === 0 && detik === 0) {
+                        clearInterval(timerInterval);
+                        clearInterval(shotimeInterval);
+                        resetTimer();
+                        document.querySelector("form").submit();
+                        return;
+                    }
+                    if (detik === 0) {
+                        menit--;
+                        detik = 59;
+                    } else {
+                        detik--;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+
+                // Memulai shotime jika belum berjalan
+                if (!shotimeInterval) {
+                    startShotime();
+                }
+            }
+        }
+
+        function startShotime() {
+            shotimeInterval = setInterval(() => {
+                if (shotime === 0) {
+                    shotime = initialShotime;
+                    playAudio();
+                    updateShotimeDisplay();
                     return;
                 }
-                if (detik === 0) {
-                    menit--;
-                    detik = 59;
-                } else {
-                    detik--;
-                }
-                updateTimerDisplay();
+                shotime--;
+                updateShotimeDisplay();
             }, 1000);
+        }
 
-            // Memulai shotime jika belum berjalan
-            if (!shotimeInterval) {
+        function playAudio() {
+            const audio = new Audio('Audio/peep.wav');
+            audio.play();
+        }
+
+
+
+        // Klik pada shotime untuk pause/resume
+        shotimeContainer.addEventListener("click", () => {
+            if (shotimeInterval) {
+                clearInterval(shotimeInterval);
+                shotimeInterval = null;
+            } else {
                 startShotime();
             }
-        }
-    }
+        });
 
-    function startShotime() {
-        shotimeInterval = setInterval(() => {
-            if (shotime === 0) {
-                shotime = initialShotime;
-                updateShotimeDisplay();
-                return;
-            }
-            shotime--;
+
+        document.querySelector(".nol").addEventListener("click", () => {
+            shotime = 0;
             updateShotimeDisplay();
-        }, 1000);
-    }
-
-    // Klik pada shotime untuk pause/resume
-    shotimeContainer.addEventListener("click", () => {
-        if (shotimeInterval) {
+            clearInterval(timerInterval);
             clearInterval(shotimeInterval);
+            timerInterval = null;
             shotimeInterval = null;
-        } else {
-            startShotime();
-        }
-    });
+        });
 
+        document.querySelector(".half").addEventListener("click", () => {
+            shotime = 14;
+            updateShotimeDisplay();
+        });
 
-    document.querySelector(".nol").addEventListener("click", () => {
-        shotime = 0;
-        updateShotimeDisplay();
-        clearInterval(timerInterval);
-        clearInterval(shotimeInterval);
-        timerInterval = null;
-        shotimeInterval = null;
-    });
+        document.querySelector(".full").addEventListener("click", () => {
+            shotime = 24;
+            updateShotimeDisplay();
+        });
 
-    document.querySelector(".half").addEventListener("click", () => {
-        shotime = 14;
-        updateShotimeDisplay();
-    });
-
-    document.querySelector(".full").addEventListener("click", () => {
-        shotime = 24;
-        updateShotimeDisplay();
-    });
-
-    timerElement.addEventListener("click", toggleTimer);
-    updateTimerDisplay();
-    updateShotimeDisplay();
-
-    function tambah(elementId) {
-        const scoreElement = document.getElementById(elementId);
-        let currentScore = parseInt(scoreElement.innerText);
-        scoreElement.innerText = currentScore + 1;
-    }
-
-    function tambah2(elementId) {
-        const scoreElement = document.getElementById(elementId);
-        let currentScore = parseInt(scoreElement.innerText);
-        scoreElement.innerText = currentScore + 2;
-    }
-
-    function tambah3(elementId) {
-        const scoreElement = document.getElementById(elementId);
-        let currentScore = parseInt(scoreElement.innerText);
-        scoreElement.innerText = currentScore + 3;
-    }
-
-    function kurang(elementId) {
-        const scoreElement = document.getElementById(elementId);
-        let currentScore = parseInt(scoreElement.innerText);
-        if (currentScore > 0) {
-            scoreElement.innerText = currentScore - 1;
-        }
-    }
-    function updateTeamName(inputId, displayId) {
-        const inputElement = document.getElementById(inputId);
-        const displayElement = document.getElementById(displayId);
-        displayElement.innerText = inputElement.value;
-    }
-    function resetTimer() {
-        clearInterval(timerInterval);
-        clearInterval(shotimeInterval);
-        timerInterval = null;
-        shotimeInterval = null;
-        menit = initialMenit;
-        detik = initialDetik;
-        shotime = initialShotime;
         updateTimerDisplay();
         updateShotimeDisplay();
-    }
-</script>
+
+        function tambah(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore + 1;
+            document.getElementById(elementId + "Input").value = currentScore + 1;
+        }
+
+        function tambah2(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore + 2;
+            document.getElementById(elementId + "Input").value = currentScore + 2;
+        }
+
+        function tambah3(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            scoreElement.innerText = currentScore + 3;
+            document.getElementById(elementId + "Input").value = currentScore + 3;
+        }
+
+        function kurang(elementId) {
+            const scoreElement = document.getElementById(elementId);
+            let currentScore = parseInt(scoreElement.innerText);
+            if (currentScore > 0) {
+                scoreElement.innerText = currentScore - 1;
+                document.getElementById(elementId + "Input").value = currentScore - 1;
+            }
+        }
+        function updateTeamName(inputId, displayId) {
+            const inputElement = document.getElementById(inputId);
+            const displayElement = document.getElementById(displayId);
+            displayElement.innerText = inputElement.value;
+        }
+        function resetTimer() {
+            clearInterval(timerInterval);
+            clearInterval(shotimeInterval);
+            timerInterval = null;
+            shotimeInterval = null;
+            menit = initialMenit;
+            detik = initialDetik;
+            shotime = initialShotime;
+            updateTimerDisplay();
+            updateShotimeDisplay();
+        }
+    </script>
 </body>
 </html>
