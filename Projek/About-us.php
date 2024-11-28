@@ -23,7 +23,7 @@
 <div id="modal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h1 id="modal-role "style="text-align: center;"></h1>
+        <h1 id="modal-role"></h1>
         <img id="modal-img" src="" alt="" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
         <h2 id="modal-name"></h2>
         <div class="quote-container">
@@ -89,10 +89,12 @@
             "Asset/Gambar/Tsaqif.jpg"
         ];
         const names = ["Daiva Paundra Gevano", "Andhika Puta Restu Ilahi", "Tsaqif Hasbi Aghna Syarief"];
+        const quote = ['"Jangan Nyerah, Tetap Semangat!"', '"Kreatifitas Itu Penting"', '"Jangan Lupa Bahagia"'];
 
         document.getElementById("modal-name").innerText = names[index];
         document.getElementById("modal-role").innerText = role[index];
         document.getElementById("modal-img").src = images[index];
+        document.getElementById("quote").innerText = quote[index];
         document.getElementById("modal").style.display = "flex";
     }
 

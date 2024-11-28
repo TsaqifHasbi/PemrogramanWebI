@@ -3,298 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScoreHub</title>
-    <link rel="shotcut icon" href="Gambar/logo.png">
+    <title>Tentang ScoreHub</title>
+    <link rel="shotcut icon" href="Asset/Gambar/logo.png">
     <link rel="stylesheet" href="Navbar/landingPage-Navbar.css">
     <link rel="stylesheet" href="Footer/landingPage-Footer.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="About.css">
+    <link rel="stylesheet" href="cta.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
     <style>
-        * {
+        /* Reset */
+        body, h1, h2, h3, p, ul, li {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
+            list-style: none;
         }
-        body::-webkit-scrollbar {
-            display: none;
-        }
+
         body {
-            background-color: #f8f8f8;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
             color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            user-select: none;
-            /*overflow-y: scroll;
-            -ms-overflow-style: none;
-            scrollbar-width: none;*/
         }
-        .container{
-            display: flex;
-            flex-direction: column;
-            margin: 50px 0;
-            gap: 98px;
-        }
-        .role{
-            font-size: 2rem;
-            color: #333;
-            margin: 0;
-            padding: 20px 0;
-            font-weight: 600;
-            text-transform: capitalize;
-            position: relative;
-        }
-        .data{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-left: 10px solid #4F4A45;
-            border-right: 10px solid #4F4A45;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            padding: 50px 130px;
-            margin: 20px 0;
-        }
-        .data h3{
-            margin-top: 10px;
-        }
-        .data img {
-            width: 200px;
-            max-width: 100%;
-            height: 200px;
-            border-radius: 10px;
-            display: block;
-            margin-top: 15px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .data .nama-gelar{
-            opacity: 0.6;
-        }
-        .data .quote-container {
-            background: linear-gradient(135deg, #ffffff, #e8e8e8);
-            border-left: 5px solid #3498db;
-            padding: 20px 30px;
-            max-width: 600px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            margin: 40px auto;
-        }
-        .data p {
-            margin-top: 15px;
+
+        /* Header */
+        /* .header {
+            background-color: #1a73e8;
+            color: white;
+            padding: 20px 10px;
             text-align: center;
-            font-size: 16px;
         }
-        .data i:hover{
-            transform: scale(1.4);
+
+        .header h1 {
+            font-size: 2.5rem;
         }
-        .data .sm {
+
+        .header span {
+            color: #fbbc04;
+        } */
+
+        /* Main Section */
+        main {
+            padding: 40px 120px;
+        }
+
+        .intro {
+            padding: 40px 120px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .intro h2 {
+            color: #4F4A45;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .details {
             display: flex;
-            justify-content: center;
-            margin: 20px 0 0 0;
+            flex-wrap: wrap;
             gap: 20px;
+            justify-content: center;
         }
-        .data .sm a {
-            color: black;
-            width: 56px;
-            font-size: 40px;
+
+        .card1 {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            width: 100%;
         }
-        .data .sm .ig a i{
-            color: black;
-            transition: 0.3s linear;
+
+        .card1 h3 {
+            color: #4F4A45;
+            margin-bottom: 10px;
         }
-        .data .sm .ig a i:hover {
-            background: linear-gradient(to top right, yellow, orange, red, purple, blue);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+
+        .card1 ul {
+            padding-left: 20px;
         }
-        .data .sm .tw a i{
-            color: black;
-            transition: 0.3s linear;
+
+        .card1 ul li {
+            margin-bottom: 10px;
         }
-        .data .sm .tw a i:hover {
-            color: rgb(62, 154, 190);
-            -webkit-background-clip: text;
-            background-clip: text;
+
+        .card1 ul li strong {
+            color: #fbbc04;
         }
-        .data .sm .sptfy a i {
-            color: black;
-            background-color: transparent;
-            border-radius: 50%;
+        .abt-us{
+            background-color: #9A7E6F;
+            margin: 0;
+            padding: 0;
+        }
+        .sec-cta {
+            background: #4F4A45;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 0 auto 120px auto;
+            width: 80%;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sec-cta .cta-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        .sec-cta .cta-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .sec-cta .btn1 {
             display: inline-block;
-            transition: color 0.8s ease, transform 0.8s ease;
+            padding: 12px 25px;
+            background-color: #FFC107;
+            color: #000;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
         }
-
-        .data .sm .sptfy a i:hover {
-            color: green;
-            background-color: black;
-            transform: scale(1.2);
-            border-radius: 50%;
+        
+        .sec-cta .btn1:hover {
+            background-color: #FFB300;
+            color: #fff;
+            transform: scale(1.05);
         }
-
-
-        .data .sm .git a i{
-            color: black;
-            transition: 0.3s linear;
-        }
-        .data .sm .dc a i {
-            color: black;
-            transition: 0.3s linear;
-        }
-        .data .sm .dc a i:hover {
-            color: #5865F2;
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        .data .sm .tik a i {
-            color: black;
-            transition: 0.3s linear;
-        }
-        .data .sm .steam a i {
-            color: black;
-            transition: 0.3s linear;
-        }
-        .data .sm .steam a i:hover {
-            background: linear-gradient(to bottom, #171a21, #1b2838, #2a475e, #4c6f94, #66c0f4);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
+        /* Footer */
+        /* .footer {
+            text-align: center;
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px 0;
+            margin-top: 20px;
+        } */
     </style>
 </head>
 <body>
     <?php include 'Navbar/landingPage-Navbar.php'; ?>
-    <div class="container">
-        <section id="Tsaqif">
-            <div class="Content">
-                <div class="role">
-                    <h1 style="text-align: center;">Our Front End Developer</h1>
-                </div>
-                <div class="data">
-                    <h3 style="text-align: center">Tsaqif Hasbi Aghna Syarief</h3>
-                    <img src="Asset/Gambar/Tsaqif.jpg" alt="Tsaqif" title=""/>
-                    <div class="nama-gelar">
-                        <p>Tsaqif Hasbi Aghna Syarief S.Kom M.T</p>
-                    </div>
-                    <div class="quote-container">
-                        <p>"Awas Ada Rubah."</p>
-                    </div>
-                    <p>Follow My Social Media</p>
-                    <div class="sm">
-                        <div class="ig">
-                            <a href="https://www.instagram.com/tsaqif_hasbi/"><i class="bx bxl-instagram"></i></a>
-                        </div>
-                        <div class="tw">
-                            <a href="https://twitter.com/TsaqifHasbi17?t=jot9H78I46MgPBj14Xk12w&s=08"><i class="bx bxl-twitter"></i></a>
-                        </div>
-                        <div class="sptfy">
-                            <a href="https://open.spotify.com/user/21c2iygultzcmsl6lisvlu7tq?si=fyURqvnZTxWf1PttYhtcgQ&utm_source=copy-link"><i class="bx bxl-spotify"></i></a>
-                        </div>
-                        <div class="git">
-                            <a href="https://github.com/TsaqifHasbi"><i class="bx bxl-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="sm">
-                        <div class="dc">
-                            <a href=""><i class='bx bxl-discord-alt'></i></a>
-                        </div>
-                        <div class="tik">
-                            <a href=""><i class='bx bxl-tiktok'></i></i></a>
-                        </div>
-                        <div class="steam">
-                            <a href=""><i class='bx bxl-steam'></i></a>
-                        </div>
-                    </div>
-                </div>
+    <main>
+        <section class="intro">
+            <h2>Apa itu ScoreHub?</h2>
+            <p>ScoreHub adalah platform digital yang dirancang untuk memudahkan pencatatan dan pengelolaan skor pertandingan olahraga secara real-time. Dengan antarmuka yang intuitif dan fitur canggih, ScoreHub mendukung berbagai olahraga seperti futsal, badminton, voli, dan basket.</p>
+        </section>
+
+        <section class="details">
+            <div class="card1">
+                <h3>Fungsi</h3>
+                <ul>
+                    <li><strong>Pencatatan Skor Real-Time:</strong> Perubahan skor dapat diperbarui langsung saat pertandingan berlangsung.</li>
+                    <li><strong>Pengelolaan Waktu Pertandingan:</strong> Timer otomatis dengan notifikasi audio ketika waktu habis.</li>
+                    <li><strong>Penyimpanan Riwayat Pertandingan:</strong> Lihat detail skor dan waktu pertandingan sebelumnya.</li>
+                    <li><strong>Antarmuka Pengguna yang Mudah:</strong> Proses pencatatan skor menjadi sederhana dan efisien.</li>
+                </ul>
+            </div>
+
+            <div class="card1">
+                <h3>Tujuan</h3>
+                <ul>
+                    <li>Meningkatkan efisiensi dalam pencatatan skor.</li>
+                    <li>Menyediakan akses informasi transparan untuk pemain, pelatih, dan penonton.</li>
+                    <li>Meningkatkan pengalaman pertandingan bagi semua pihak.</li>
+                    <li>Memudahkan pengelolaan pertandingan olahraga.</li>
+                </ul>
+            </div>
+
+            <div class="card1">
+                <h3>Manfaat</h3>
+                <ul>
+                    <li><strong>Akurasi:</strong> Memastikan setiap perubahan skor tercatat dengan benar.</li>
+                    <li><strong>Kemudahan Penggunaan:</strong> Dapat digunakan oleh siapa saja tanpa pelatihan khusus.</li>
+                    <li><strong>Akses Informasi:</strong> Riwayat pertandingan dapat diakses kapan saja.</li>
+                    <li><strong>Notifikasi Waktu:</strong> Audio notifikasi membantu mengelola waktu pertandingan.</li>
+                    <li><strong>Peningkatan Pengalaman:</strong> Pertandingan menjadi lebih terorganisir dan seru.</li>
+                </ul>
             </div>
         </section>
-        <section id="Andhika">
-            <div class="Content">
-                <div class="role">
-                    <h1 style="text-align: center;">Our UI/UX Designer</h1>
-                </div>
-                <div class="data">
-                    <h3 style="text-align: center">Andhika Putra Restu Ilahi</h3>
-                    <img src="Asset/Gambar/Andhika.jpg" alt="Andhika" title=""/>
-                    <div class="nama-gelar">
-                        <p>Andhika Putra Restu Ilahi S.Kom M.Kom</p>
-                    </div>
-                    <div class="quote-container">
-                        <p>"Jalan-jalan ke arah pantai, ngapain?"</p>
-                    </div>
-                    <p>Follow My Social Media</p>
-                    <div class="sm">
-                        <div class="ig">
-                            <a href=""><i class="bx bxl-instagram"></i></a>
-                        </div>
-                        <div class="tw">
-                            <a href=""><i class="bx bxl-twitter"></i></a>
-                        </div>
-                        <div class="sptfy">
-                            <a href=""><i class="bx bxl-spotify"></i></a>
-                        </div>
-                        <div class="git">
-                            <a href=""><i class="bx bxl-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="sm">
-                        <div class="dc">
-                            <a href=""><i class='bx bxl-discord-alt'></i></a>
-                        </div>
-                        <div class="tik">
-                            <a href=""><i class='bx bxl-tiktok'></i></i></a>
-                        </div>
-                        <div class="steam">
-                            <a href=""><i class='bx bxl-steam'></i></a>
-                        </div>
-                    </div>
-                </div>
+    </main>
+    <section class="us">
+        <div class="abt-us">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,160L34.3,144C68.6,128,137,96,206,74.7C274.3,53,343,43,411,64C480,85,549,139,617,144C685.7,149,754,107,823,112C891.4,117,960,171,1029,192C1097.1,213,1166,203,1234,170.7C1302.9,139,1371,85,1406,58.7L1440,32L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
+            <?php include 'About-us.php'; ?>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#9A7E6F" fill-opacity="1" d="M0,160L34.3,144C68.6,128,137,96,206,74.7C274.3,53,343,43,411,64C480,85,549,139,617,144C685.7,149,754,107,823,112C891.4,117,960,171,1029,192C1097.1,213,1166,203,1234,170.7C1302.9,139,1371,85,1406,58.7L1440,32L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"></path></svg>
+    </section>
+    <section class="sec">
+        <div class="sec-cta">
+            <div class="cta-content">
+                <h2>Siap Berkolaborasi?</h2>
+                <p>Mari bicarakan ide besar Anda dan temukan cara kami dapat membantu mencapainya.</p>
+                <a href="#" class="btn1">Mulai Sekarang</a>
             </div>
-        </section>
-        <section id="Paundra">
-            <div class="Content">
-                <div class="role">
-                    <h1 style="text-align: center;">Our Back End Developer</h1>
-                </div>
-                <div class="data">
-                    <h3 style="text-align: center">Daiva Paundra Gevano</h3>
-                    <img src="Asset/Gambar/Paundra.jpg" alt="Paundra" title=""/>
-                    <div class="nama-gelar">
-                        <p>Daiva Paundra Gevano S.Kom M.Kom</p>
-                    </div>
-                    <div class="quote-container">
-                        <p>"Jangan pernah menyerah pada mimpi-mimpimu, karena mimpimu adalah kunci menuju kebahagiaan."</p>
-                    </div>
-                    <p>Follow My Social Media</p>
-                    <div class="sm">
-                        <div class="ig">
-                            <a href=""><i class="bx bxl-instagram"></i></a>
-                        </div>
-                        <div class="tw">
-                            <a href=""><i class="bx bxl-twitter"></i></a>
-                        </div>
-                        <div class="sptfy">
-                            <a href=""><i class="bx bxl-spotify"></i></a>
-                        </div>
-                        <div class="git">
-                            <a href=""><i class="bx bxl-github"></i></a>
-                        </div>
-                    </div>
-                    <div class="sm">
-                        <div class="dc">
-                            <a href=""><i class='bx bxl-discord-alt'></i></a>
-                        </div>
-                        <div class="tik">
-                            <a href=""><i class='bx bxl-tiktok'></i></i></a>
-                        </div>
-                        <div class="steam">
-                            <a href=""><i class='bx bxl-steam'></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+        </div>
+    </section>
     <?php include 'Footer/landingPage-Footer.php'; ?>
 </body>
 </html>
