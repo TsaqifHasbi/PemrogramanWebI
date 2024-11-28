@@ -18,9 +18,9 @@
                 <h3><a href="">About Us</a></h3>
                 <div class="us">
                     <div class="foto">
-                        <a href="About.php#Tsaqif"><img src="Gambar/Tsaqif.jpg" alt="Tsaqif"></a>
-                        <a href="About.php#Andhika"><img src="Gambar/Andhika.jpg" alt="Andhika"></a>
-                        <a href="About.php#Paundra"><img src="Gambar/Paundra.jpg" alt="Paundra"></a>
+                        <a href="About.php#Tsaqif"><img src="Asset/Gambar/Tsaqif.jpg" alt="Tsaqif"></a>
+                        <a href="About.php#Andhika"><img src="Asset/Gambar/Andhika.jpg" alt="Andhika"></a>
+                        <a href="About.php#Paundra"><img src="Asset/Gambar/Paundra.jpg" alt="Paundra"></a>
                     </div>
                 </div>
             </div>

@@ -10,10 +10,6 @@
       margin: 0;
       padding: 0;
       background-color: #1a1a1a;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       font-family: Arial, sans-serif;
     }
 
@@ -77,15 +73,15 @@
 <body>
   <div class="carousel-container">
     <div class="card left" onclick="moveToFront(0)">
-      <img src="Gambar/Paundra.jpg" alt="Paundra">
+      <img src="Asset/Gambar/Paundra.jpg" alt="Paundra">
       <h2>Paundra</h2>
     </div>
     <div class="card front" onclick="moveToFront(1)">
-      <img src="Gambar/Andhika.jpg" alt="Andhika">
+      <img src="Asset/Gambar/Andhika.jpg" alt="Andhika">
       <h2>Andhika</h2>
     </div>
     <div class="card back" onclick="moveToFront(2)">
-      <img src="Gambar/Tsaqif.jpg" alt="Tsaqif">
+      <img src="Asset/Gambar/Tsaqif.jpg" alt="Tsaqif">
       <h2>Tsaqif</h2>
     </div>
   </div>

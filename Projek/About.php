@@ -172,7 +172,7 @@
                 </div>
                 <div class="data">
                     <h3 style="text-align: center">Tsaqif Hasbi Aghna Syarief</h3>
-                    <img src="Gambar/Tsaqif.jpg" alt="Tsaqif" title=""/>
+                    <img src="Asset/Gambar/Tsaqif.jpg" alt="Tsaqif" title=""/>
                     <div class="nama-gelar">
                         <p>Tsaqif Hasbi Aghna Syarief S.Kom M.T</p>
                     </div>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="data">
                     <h3 style="text-align: center">Andhika Putra Restu Ilahi</h3>
-                    <img src="Gambar/Andhika.jpg" alt="Andhika" title=""/>
+                    <img src="Asset/Gambar/Andhika.jpg" alt="Andhika" title=""/>
                     <div class="nama-gelar">
                         <p>Andhika Putra Restu Ilahi S.Kom M.Kom</p>
                     </div>
@@ -258,7 +258,7 @@
                 </div>
                 <div class="data">
                     <h3 style="text-align: center">Daiva Paundra Gevano</h3>
-                    <img src="Gambar/Paundra.jpg" alt="Paundra" title=""/>
+                    <img src="Asset/Gambar/Paundra.jpg" alt="Paundra" title=""/>
                     <div class="nama-gelar">
                         <p>Daiva Paundra Gevano S.Kom M.Kom</p>
                     </div>

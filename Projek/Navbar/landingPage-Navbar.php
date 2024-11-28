@@ -14,7 +14,7 @@
 </header> -->
 <div class="navbar">
     <div class="logo">
-        <a href="index.php"><img src="Gambar/logo.png" alt=""></a>
+        <a href="index.php"><img src="Asset/Gambar/logo.png" alt=""></a>
     </div>
     <div class="nav">
         <a href="score-futsal.php">Futsal</a>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScoreHub</title>
-    <link rel="shotcut icon" href="Gambar/logo.png">
+    <link rel="shotcut icon" href="Asset/Gambar/logo.png">
     <link rel="stylesheet" href="Navbar/landingPage-Navbar.css">
     <link rel="stylesheet" href="Footer/landingPage-Footer.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -161,15 +161,15 @@
     <h2 style="text-align: center; margin-top: 20px; padding-top: 80px;">Mengapa ScoreHub?</h2>
     <div class="features">
         <div class="feature">
-            <img src="Gambar/feature1.png" alt="Real-time">
+            <img src="Asset/Gambar/feature1.png" alt="Real-time">
             <p>Skor pertandingan dicatat dan diperbarui secara real-time</p>
         </div>
         <div class="feature">
-            <img src="Gambar/feature2.png" alt="History">
+            <img src="Asset/Gambar/feature2.png" alt="History">
             <p>Histori pertandingan yang dapat Anda akses kapan saja</p>
         </div>
         <div class="feature">
-            <img src="Gambar/feature3.png" alt="Scoreboards">
+            <img src="Asset/Gambar/feature3.png" alt="Scoreboards">
             <p>Berbagai jenis scoreboard dari berbagai cabang olahraga</p>
         </div>
     </div>
