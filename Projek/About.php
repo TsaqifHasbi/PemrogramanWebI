@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang ScoreHub</title>
+    <title>About - ScoreHub</title>
     <link rel="shotcut icon" href="Asset/Gambar/logo.png">
     <link rel="stylesheet" href="Navbar/landingPage-Navbar.css">
     <link rel="stylesheet" href="Footer/landingPage-Footer.css">
     <link rel="stylesheet" href="About.css">
-    <link rel="stylesheet" href="cta.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
     <style>
         /* Reset */
