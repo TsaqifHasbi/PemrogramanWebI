@@ -358,8 +358,8 @@ session_start();
     </div>
     <?php include 'Footer/scoreBoard-Footer.php'; ?>
     <script>
-        let menit = 0;
-        let detik = 5;
+        let menit = 10;
+        let detik = 0;
         let timerInterval = null;
         const startPauseButton = document.querySelector(".start-pause");
         const resetButton = document.querySelector(".reset");
