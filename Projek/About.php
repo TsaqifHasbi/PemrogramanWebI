@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="About.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
     <style>
-        /* Reset */
         body, h1, h2, h3, p, ul, li {
             margin: 0;
             padding: 0;
             list-style: none;
+        }
+        body::-webkit-scrollbar {
+            display: none;
         }
 
         body {
