@@ -450,7 +450,7 @@ session_start();
         #modalContent table .r, #modalContent table .l{
             width: 100px;
         }
-        footer {
+        /* footer {
             background-color: #4F4A45;
             color: #ffffff;
             padding: 32px 0;
@@ -458,7 +458,7 @@ session_start();
             width: 100%;
             position: relative;
             bottom: 0;
-        }
+        } */
     </style>
 </head>
 <body>
